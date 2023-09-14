@@ -1,0 +1,29 @@
+{% extends 'calendar/base_calendar.html.twig' %}
+
+{% block title %}Grande salle
+{% endblock %}
+
+{% block body %}
+	<div id="calendrier"></div>
+{% endblock %}
+
+{% block javascripts %}
+	<script>
+
+		window.onload = () => {
+let calendarElt = document.querySelector("#calendrier");
+
+let calendar = new FullCalendar.Calendar(calendarElt, {
+initialView: 'timeGridWeek',
+locale: 'fr',
+firstDay: 1,
+timeZone: 'Europe/Paris',
+headerToolbar: {
+end: 'dayGridMonth,timeGridWeek'
+}
+});
+
+calendar.render();
+};
+	</script>
+{% endblock %}
