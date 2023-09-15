@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Slot
+{% endblock %}
+
+{% block body %}
+	<h1>Slot</h1>
+
+	<table class="table">
+		<tbody>
+			<tr>
+				<th>Id</th>
+				<td>{{ slot.id }}</td>
+			</tr>
+			<tr>
+				<th>Title</th>
+				<td>{{ slot.title }}</td>
+			</tr>
+			<tr>
+				<th>Start</th>
+				<td>{{ slot.start ? slot.start|date('d-m-Y H:i:s') : '' }}</td>
+			</tr>
+			<tr>
+				<th>End</th>
+				<td>{{ slot.end ? slot.end|date('d-m-Y H:i:s') : '' }}</td>
+			</tr>
+			<tr>
+				<th>Description</th>
+				<td>{{ slot.description }}</td>
+			</tr>
+			<tr>
+				<th>All_day</th>
+				<td>{{ slot.allDay ? 'Yes' : 'No' }}</td>
+			</tr>
+			<tr>
+				<th>Background_color</th>
+				<td>{{ slot.backgroundColor }}</td>
+			</tr>
+			<tr>
+				<th>Text_color</th>
+				<td>{{ slot.textColor }}</td>
+			</tr>
+		</tbody>
+	</table>
+
+	<a href="{{ path('app_slot_index') }}">back to list</a>
+
+	<a href="{{ path('app_slot_edit', {'id': slot.id}) }}">edit</a>
+
+	{{ include('slot/_delete_form.html.twig') }}
+{% endblock %}

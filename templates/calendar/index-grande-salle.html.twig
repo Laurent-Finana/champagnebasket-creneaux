@@ -19,11 +19,12 @@ locale: 'fr',
 firstDay: 1,
 timeZone: 'Europe/Paris',
 headerToolbar: {
-end: 'dayGridMonth,timeGridWeek'
-}
+end: 'dayGridMonth,timeGridWeek, prev,next'
+},
+events: {{ data|raw }}
 });
 
 calendar.render();
-};
+}
 	</script>
 {% endblock %}

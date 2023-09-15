@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Slot index
+{% endblock %}
+
+{% block body %}
+	<h1>Slot index</h1>
+
+	<table class="table">
+		<thead>
+			<tr>
+				<th>Id</th>
+				<th>Title</th>
+				<th>Start</th>
+				<th>End</th>
+				<th>Description</th>
+				<th>All_day</th>
+				<th>Background_color</th>
+				<th>Text_color</th>
+				<th>actions</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for slot in slots %}
+				<tr>
+					<td>{{ slot.id }}</td>
+					<td>{{ slot.title }}</td>
+					<td>{{ slot.start ? slot.start|date('d-m-Y H:i:s') : '' }}</td>
+					<td>{{ slot.end ? slot.end|date('d-m-Y H:i:s') : '' }}</td>
+					<td>{{ slot.description }}</td>
+					<td>{{ slot.allDay ? 'Yes' : 'No' }}</td>
+					<td>{{ slot.backgroundColor }}</td>
+					<td>{{ slot.textColor }}</td>
+					<td>
+						<a href="{{ path('app_slot_show', {'id': slot.id}) }}">show</a>
+						<a href="{{ path('app_slot_edit', {'id': slot.id}) }}">edit</a>
+					</td>
+				</tr>
+			{% else %}
+				<tr>
+					<td colspan="9">no records found</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+
+	<a href="{{ path('app_slot_new') }}">Create new</a>
+{% endblock %}
