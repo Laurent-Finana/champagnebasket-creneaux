@@ -1,13 +1,14 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Edit Slot{% endblock %}
+{% block title %}Edit Slot
+{% endblock %}
 
 {% block body %}
-    <h1>Edit Slot</h1>
+	<h1 class="text-center mb-2">Modifier le créneau</h1>
 
-    {{ include('slot/_form.html.twig', {'button_label': 'Update'}) }}
+	{{ include('slot/_form.html.twig', {'button_label': 'Update'}) }}
 
-    <a href="{{ path('app_slot_index') }}">back to list</a>
+	<a href="{{ path('app_slot_index') }}">Retour à la liste</a>
 
-    {{ include('slot/_delete_form.html.twig') }}
+	{{ include('slot/_delete_form.html.twig') }}
 {% endblock %}

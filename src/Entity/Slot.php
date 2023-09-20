@@ -36,7 +36,7 @@ class Slot
     private ?string $text_color = null;
 
     #[ORM\ManyToOne(inversedBy: 'slots')]
-    #[ORM\JoinColumn(nullable: false)]
+    #[ORM\JoinColumn(nullable: true)]
     private ?User $user = null;
 
     public function getId(): ?int

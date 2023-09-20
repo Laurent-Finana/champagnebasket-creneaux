@@ -4,32 +4,24 @@
 {% endblock %}
 
 {% block body %}
-	<nav class="flex items-center justify-between flex-wrap bg-cyan-600 p-6">
-		<div class="flex items-center flex-shrink-0 text-white mr-6">
-			<img src="{{ asset('output-onlinepngtools.png') }}" height="50" alt="Logo training-slots" class="mr-2">
-			<span class="font-semibold text-xl tracking-tight">Traing-Slots</span>
-		</div>
-		<div class="block lg:hidden">
-			<button class="flex items-center px-3 py-2 border rounded text-teal-200 border-teal-400 hover:text-white hover:border-white">
-				<svg class="fill-current h-3 w-3" viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-					<title>Menu</title><path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"/></svg>
-			</button>
-		</div>
-		<div class="w-full block flex-grow lg:flex lg:items-center lg:w-auto">
-			<div class="text-lg text-center lg:flex-grow">
-				<a href="#responsive-header" class="block mt-4 lg:inline-block lg:mt-0 text-orange-200 hover:text-white mr-10">
-					Grande salle
-				</a>
-				<a href="#responsive-header" class="block mt-4 lg:inline-block lg:mt-0 text-orange-200 hover:text-white mr-10">
-					Petite salle
-				</a>
-				<a href="#responsive-header" class="block mt-4 lg:inline-block lg:mt-0 text-orange-200 hover:text-white mr-10">
-					Musculation
-				</a>
+	<div class="bg-white">
+
+		<div class="relative isolate px-6 pt-6 lg:px-8">
+			<div class="mx-auto max-w-2xl py-32 sm:py-48 lg:py-56">
+				<div class="text-center">
+					<h1 class="text-4xl font-bold tracking-normal text-cyan-600 sm:text-6xl">Bienvenue sur la plateforme
+						<br>Training-Slots
+					</h1>
+					<p class="mt-6 text-lg leading-8 text-gray-600">Consultez, réservez ou modifiez vos créneaux d'entraînement</p>
+					<p class="mt-6 text-2xl text-orange-300">Complexe René Tys</p>
+					<div class="mt-10 flex items-center justify-center gap-x-6">
+						<a href="#" class="rounded-md bg-cyan-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:text-cyan-600 hover:bg-orange-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Se connecter</a>
+					</div>
+				</div>
 			</div>
-			<div>
-				<a href="#" class="inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-cyan-600 hover:bg-orange-200 mt-4 lg:mt-0">Se connecter</a>
+			<div class="absolute inset-x-0 top-[calc(100%-13rem)] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[calc(100%-30rem)]" aria-hidden="true">
+				<div class="relative left-[calc(50%+3rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-30 sm:left-[calc(50%+36rem)] sm:w-[72.1875rem]" style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)"></div>
 			</div>
 		</div>
-	</nav>
+	</div>
 {% endblock %}
