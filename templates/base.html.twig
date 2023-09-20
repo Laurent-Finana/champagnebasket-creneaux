@@ -23,7 +23,7 @@
 			<nav class="flex items-center justify-between flex-wrap bg-cyan-600 p-6">
 				<div class="flex items-center flex-shrink-0 text-white mr-6">
 					<a href="{{ path('app_main')}}">
-						<img src="{{ asset('output-onlinepngtools.png') }}" height="50" alt="Logo training-slots" class="mr-2 lg:inline-block">
+						<img src="{{ asset('output-onlinepngtools.png') }}" alt="Logo training-slots" class="mr-2 lg:inline-block">
 						<span class="font-semibold text-xl tracking-tight">Traing-Slots</span>
 					</a>
 				</div>
@@ -46,11 +46,14 @@
 						</a>
 					</div>
 					<div>
-						<a href="#" class="inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-cyan-600 hover:bg-orange-200 mt-4 lg:mt-0">Se connecter</a>
+						<a href="{{ path('app_login')}}" class="inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-cyan-600 hover:bg-orange-200 mt-4 lg:mt-0">Se connecter</a>
 					</div>
 				</div>
 			</nav>
-			<a href="{{ path('app_slot_new')}}" class="inline-block text-sm ms-2 px-2 py-2 leading-none border rounded bg-green-500 text-black border-white hover:border-transparent hover:text-cyan-600 hover:bg-orange-200 mt-4 lg:mt-0">Nouveau créneau</a>
+			{% if (app.request.attributes.get('_route') != 'app_main') %}
+				<a href="{{ path('app_slot_new')}}" class="inline-block text-sm ms-2 px-2 py-2 leading-none border rounded bg-green-500 text-black border-white hover:border-transparent hover:text-cyan-600 hover:bg-orange-200 mt-4 lg:mt-0">Nouveau créneau</a>
+			{% endif %}
+
 		{% endblock %}
 		<div class="container">
 			<div class="row">
