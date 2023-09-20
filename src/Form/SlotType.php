@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Slot;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\ColorType;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -24,7 +25,16 @@ class SlotType extends AbstractType
             ->add('description')
             ->add('all_day')
             ->add('background_color', ColorType::class)
-            ->add('text_color', ColorType::class);
+            ->add('text_color', ColorType::class)
+            ->add('room', ChoiceType::class, [
+                'choices' => [
+                    'Grande salle' => 1,
+                    'Petite salle' => 2,
+                    'Musculation' => 3,
+                ],
+                'multiple' => false,
+                'expanded' => true,
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void
