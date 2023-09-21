@@ -4,9 +4,12 @@ namespace App\Controller;
 
 use App\Repository\SlotRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\ExpressionLanguage\Expression;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Http\Attribute\IsGranted;
 
+#[IsGranted(new Expression('is_remember_me() or is_fully_authenticated()'))]
 class CalendarController extends AbstractController
 {
     #[Route('/grande-salle', name: 'app_calendar_grande_salle')]

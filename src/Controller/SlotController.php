@@ -6,12 +6,15 @@ use App\Entity\Slot;
 use App\Form\SlotType;
 use App\Repository\SlotRepository;
 use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\ExpressionLanguage\Expression;
+use Symfony\Component\Security\Http\Attribute\IsGranted;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 #[Route('/slot')]
+#[IsGranted(new Expression('is_granted("ROLE_ADMIN") or is_granted("ROLE_COACH")'))]
 class SlotController extends AbstractController
 {
     #[Route('/', name: 'app_slot_index', methods: ['GET'])]
@@ -71,7 +74,7 @@ class SlotController extends AbstractController
     #[Route('/{id}', name: 'app_slot_delete', methods: ['POST'])]
     public function delete(Request $request, Slot $slot, EntityManagerInterface $entityManager): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$slot->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $slot->getId(), $request->request->get('_token'))) {
             $entityManager->remove($slot);
             $entityManager->flush();
         }
