@@ -10,6 +10,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
 
 #[IsGranted(new Expression('is_remember_me() or is_fully_authenticated()'))]
+#[Route('/calendar')]
 class CalendarController extends AbstractController
 {
     #[Route('/grande-salle', name: 'app_calendar_grande_salle')]
