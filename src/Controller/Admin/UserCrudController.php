@@ -5,6 +5,7 @@ namespace App\Controller\Admin;
 use App\Entity\User;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ArrayField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\ChoiceField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\EmailField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
@@ -20,10 +21,16 @@ class UserCrudController extends AbstractCrudController
     public function configureFields(string $pageName): iterable
     {
         return [
-            IdField::new('id'),
-            EmailField::new('email'),
+            IdField::new('id')->hideOnForm(),
+            EmailField::new('email')->hideWhenUpdating(),
+            TextField::new('password')->onlyWhenCreating(),
             TextField::new('pseudo'),
-            ArrayField::new('roles')
+            ChoiceField::new('roles')->setChoices([
+                'User' => 'ROLE_USER',
+                'Player' => 'ROLE_PLAYER',
+                'Coach' => 'ROLE_COACH',
+                'Admin' => 'ROLE_ADMIN'
+            ])->allowMultipleChoices()
         ];
     }
 }
