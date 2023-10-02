@@ -23,8 +23,12 @@ headerToolbar: {
 end: 'dayGridMonth,timeGridWeek, prev,next'
 },
 events: {{ data|raw }},
+eventClick: function(info) {
+    alert('Event: ' + info.event.extendedProps.description);
+  },
 editable: true,
 eventResizableFromStart: true
+
 });
 
 calendar.on('eventChange', (e) => {
