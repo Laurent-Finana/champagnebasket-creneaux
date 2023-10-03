@@ -18,10 +18,25 @@ locale: 'fr',
 firstDay: 1,
 timeZone: 'Europe/Paris',
 headerToolbar: {
-end: 'dayGridMonth,timeGridWeek, prev,next'
+left: 'dayGridMonth,timeGridWeek,list',
+center: 'title',
+end: 'today, prev,next'
+},
+buttonText: {
+month: 'Mois',
+week: 'Semaine',
+list: 'Liste',
+today: 'Aujourd\'hui'
 },
 events: {{ data|raw }},
 editable: true,
+
+
+eventDrop: (infos) => {
+if (!confirm("Êtes-vous sûr de vouloir déplacer ce créneau d'entraînement ?")) {
+infos.revert();
+}
+},
 eventResizableFromStart: true,
 eventClick: function (info) {
 alert('Description: ' + info.event.extendedProps.description);

@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Repository\SlotRepository;
+use App\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\ExpressionLanguage\Expression;
 use Symfony\Component\HttpFoundation\Response;
@@ -34,6 +35,8 @@ class CalendarController extends AbstractController
         }
 
         $data = json_encode($rdvs);
+
+
 
         return $this->render('calendar/index-grande-salle.html.twig', compact('data'));
     }
