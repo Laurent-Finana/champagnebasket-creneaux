@@ -8,11 +8,12 @@
 			{% endblock %}
 		</title>
 		<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
-		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
 		<link rel="stylesheet" href="{{ asset('assets/css/trainingSlots.css') }}">
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 		{% block stylesheets %}
 			{{ encore_entry_link_tags('app') }}
 		{% endblock %}
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous" defer></script>
 		{% block javascripts %}
 			{{ encore_entry_script_tags('app') }}
 		{% endblock %}
@@ -77,19 +78,24 @@
 					<a href="{{ path('app_slot_index')}}" class="inline-block text-sm ms-2 px-2 py-2 leading-none border rounded bg-yellow-500 text-black border-white hover:border-transparent hover:text-cyan-600 hover:bg-orange-200 mt-4 lg:mt-0">Modifier un créneau</a>
 				{% else %}
 
-					<a href="#" class="inline-block text-sm ms-2 px-2 py-2 leading-none border rounded bg-green-500 text-black border-white hover:border-transparent hover:text-cyan-600 hover:bg-orange-200 mt-4 lg:mt-0">Demander un créneau</a>
+					<a href="{{ path('app_message_send')}}" class="inline-block text-sm ms-2 px-2 py-2 leading-none border rounded bg-green-500 text-black border-white hover:border-transparent hover:text-cyan-600 hover:bg-orange-200 mt-4 lg:mt-0">Demander un créneau</a>
 
 				{% endif %}
 			{% endif %}
 
 		{% endblock %}
+		{% for message in app.flashes("message") %}
+			<div class="alert alert-success alert-dismissible fade show" role="alert">
+				{{message}}
+				<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+			</div>
+		{% endfor %}
 		<div class="container">
 			<div class="row">
 				<div class="col"> {% block body %}{% endblock %}
 					</div>
 				</div>
 			</div>
-			<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
 			<script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js" integrity="sha256-8EcfIJRWyvnu/U0OsfCk05x1JGVmeC2a7sJQHrbWYSA=" crossorigin="anonymous"></script>
 		</body>
 	</html>

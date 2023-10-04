@@ -1,0 +1,18 @@
+{% extends 'message/_layout-message.html.twig' %}
+
+{% block title %}Messagerie
+{% endblock %}
+
+{% block body %}
+	<section class="container">
+		<div class="row">
+			<div class="col">
+				<h1>Envoyer un message</h1>
+				{{ form(form) }}
+					<a class="btn btn-primary" href="{{ path('app_message') }}">
+						Retour
+					</a>
+				</div>
+			</div>
+		</section>
+	{% endblock %}
