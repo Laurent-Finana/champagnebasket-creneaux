@@ -44,14 +44,24 @@
 							Musculation
 						</a>
 
-
-					</div>
-					<div>
 						{% if is_granted('ROLE_ADMIN') %}
 							<a href="{{ path('admin')}}" class="inline-block text-sm px-4 py-2 leading-none border rounded text-red-300 border-white hover:border-transparent hover:text-cyan-600 hover:bg-red-300 mt-4 lg:mt-0">
 								Zone Administrateur
 							</a>
 						{% endif %}
+
+
+					</div>
+					<div>
+
+						{% if is_granted('IS_AUTHENTICATED_FULLY') %}
+							<p class="inline-block text-white">Bonjour
+								<span class="block ml-2 mt-4 lg:inline-block lg:mt-0 text-orange-200 mr-10">
+									{{ app.user.pseudo }}
+								</span>
+							</p>
+						{% endif %}
+
 						{% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
 							<a href="{{ path('app_logout')}}" class="inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-cyan-600 hover:bg-orange-200 mt-4 lg:mt-0">Déconnexion</a>
 						{% else %}
