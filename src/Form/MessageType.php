@@ -20,16 +20,19 @@ class MessageType extends AbstractType
     {
         $builder
             ->add('title', TextType::class, [
+                "label" => "Titre",
                 "attr" => [
                     "class" => "form-control"
                 ]
             ])
             ->add('content', TextareaType::class, [
+                "label" => "Message",
                 "attr" => [
                     "class" => "form-control"
                 ]
             ])
             ->add('recipient', EntityType::class, [
+                "label" => "Destinataire",
                 "class" => User::class,
                 'query_builder' => function (EntityRepository $er): QueryBuilder {
                     return $er->createQueryBuilder('u')
