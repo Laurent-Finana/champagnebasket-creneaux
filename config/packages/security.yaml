@@ -39,7 +39,8 @@ security:
   access_control:
     - { path: ^/admin, roles: ROLE_ADMIN }
     - { path: ^/slot, roles: ROLE_COACH }
-    - { path: ^/calendar, roles: ROLE_PLAYER }
+    - { path: ^/message, roles: ROLE_PLAYER }
+    - { path: ^/calendar, roles: ROLE_USER }
     - { path: ^/login, roles: PUBLIC_ACCESS }
 
   role_hierarchy:

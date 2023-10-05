@@ -29,21 +29,23 @@
 				</div>
 				<div class="w-full block flex-grow lg:flex lg:items-center lg:w-auto">
 					<div class="text-lg text-center lg:flex-grow">
-						<a href="{{ path('app_calendar_grande_salle')}}" class="block mt-4 lg:inline-block lg:mt-0 text-orange-200 hover:text-white mr-10">
+						<a href="{{ path('app_calendar_grande_salle')}}" class="block mt-4 lg:inline-block lg:mt-0 text-orange-200 hover:text-white mr-10 {% if (app.request.attributes.get('_route') == 'app_calendar_grande_salle') %} text-white underline{% endif %}">
 							Grande salle
 						</a>
-						<a href="{{ path('app_calendar_petite_salle')}}" class="block mt-4 lg:inline-block lg:mt-0 text-orange-200 hover:text-white mr-10">
+						<a href="{{ path('app_calendar_petite_salle')}}" class="block mt-4 lg:inline-block lg:mt-0 text-orange-200 hover:text-white mr-10 {% if (app.request.attributes.get('_route') == 'app_calendar_petite_salle') %}text-white underline{% endif %}">
 							Petite salle
 						</a>
-						<a href="{{ path('app_calendar_musculation')}}" class="block mt-4 lg:inline-block lg:mt-0 text-orange-200 hover:text-white mr-10">
+						<a href="{{ path('app_calendar_musculation')}}" class="block mt-4 lg:inline-block lg:mt-0 text-orange-200 hover:text-white mr-10 {% if (app.request.attributes.get('_route') == 'app_calendar_musculation') %}text-white underline{% endif %}">
 							Musculation
 						</a>
-						<a href="{{ path('app_message')}}" class="block mt-4 lg:inline-block lg:mt-0 text-orange-200 hover:text-white mr-10">
-							Messagerie
-						</a>
+						{% if is_granted('ROLE_PLAYER') %}
+							<a href="{{ path('app_message')}}" class="block mt-4 lg:inline-block lg:mt-0 text-orange-200 hover:text-white mr-10 {% if (app.request.attributes.get('_route') == 'app_message') %}text-white underline{% endif %}">
+								Messagerie
+							</a>
+						{% endif %}
 
 						{% if is_granted('ROLE_ADMIN') %}
-							<a href="{{ path('admin')}}" class="inline-block text-sm px-4 py-2 leading-none border rounded text-red-300 border-white hover:border-transparent hover:text-cyan-600 hover:bg-red-300 mt-4 lg:mt-0">
+							<a href="{{ path('admin')}}" class="inline-block text-sm px-4 py-2 leading-none border rounded text-red-300 border-white hover:border-transparent hover:text-cyan-600 hover:bg-red-300 mt-4 lg:mt-0 {% if (app.request.attributes.get('_route') == 'admin') %}text-white underline{% endif %}">
 								Zone Administrateur
 							</a>
 						{% endif %}
@@ -63,23 +65,25 @@
 						{% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
 							<a href="{{ path('app_logout')}}" class="inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-cyan-600 hover:bg-orange-200 mt-4 lg:mt-0">Déconnexion</a>
 						{% else %}
-							<a href="{{ path('app_login')}}" class="inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-cyan-600 hover:bg-orange-200 mt-4 lg:mt-0">Connexion</a>
+							<a href="{{ path('app_login')}}" class="ml-12 inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-cyan-600 hover:bg-orange-200 mt-4 lg:mt-0">Connexion</a>
+							<p class="mt-2">
+								<a href="{{ path('app_register') }}" class="text-sm">Pas encore inscrit ? Créer un compte</a>
+							</p>
 						{% endif %}
 
 					</div>
 				</div>
 			</nav>
-			{% if (app.request.attributes.get('_route') == 'app_calendar_grande_salle' or app.request.attributes.get('_route') == 'app_calendar_petite_salle' or app.request.attributes.get('_route') == 'app_calendar_musculation') %}
-				{% if is_granted('ROLE_COACH') %}
-					<a href="{{ path('app_slot_new')}}" class="inline-block text-sm ms-2 px-2 py-2 leading-none border rounded bg-green-500 text-black border-white hover:border-transparent hover:text-cyan-600 hover:bg-orange-200 mt-4 lg:mt-0">Nouveau créneau</a>
-					<a href="{{ path('app_slot_index')}}" class="inline-block text-sm ms-2 px-2 py-2 leading-none border rounded bg-yellow-500 text-black border-white hover:border-transparent hover:text-cyan-600 hover:bg-orange-200 mt-4 lg:mt-0">Modifier un créneau</a>
-				{% else %}
-
-					<a href="{{ path('app_message_send')}}" class="inline-block text-sm ms-2 px-2 py-2 leading-none border rounded bg-green-500 text-black border-white hover:border-transparent hover:text-cyan-600 hover:bg-orange-200 mt-4 lg:mt-0">Demander un créneau</a>
-
-				{% endif %}
+			{# 			{% if (app.request.attributes.get('_route') == 'app_calendar_grande_salle' or app.request.attributes.get('_route') == 'app_calendar_petite_salle' or app.request.attributes.get('_route') == 'app_calendar_musculation') %}
+																																																																																																																					 #}
+			{% if is_granted('ROLE_COACH') %}
+				<a href="{{ path('app_slot_new')}}" class="inline-block text-sm ms-2 px-2 py-2 leading-none border rounded bg-green-500 text-black border-white hover:border-transparent hover:text-cyan-600 hover:bg-orange-200 mt-4 lg:mt-0">Nouveau créneau</a>
+				<a href="{{ path('app_slot_index')}}" class="inline-block text-sm ms-2 px-2 py-2 leading-none border rounded bg-yellow-500 text-black border-white hover:border-transparent hover:text-cyan-600 hover:bg-orange-200 mt-4 lg:mt-0">Modifier un créneau</a>
+			{% elseif is_granted('ROLE_PLAYER') %}
+				<a href="{{ path('app_message_send')}}" class="inline-block text-sm ms-2 px-2 py-2 leading-none border rounded bg-green-500 text-black border-white hover:border-transparent hover:text-cyan-600 hover:bg-orange-200 mt-4 lg:mt-0">Demander un créneau</a>
 			{% endif %}
-
+			{# 			{% endif %}
+																																																																																																																					 #}
 		{% endblock %}
 
 		{% for message in app.flashes("message") %}

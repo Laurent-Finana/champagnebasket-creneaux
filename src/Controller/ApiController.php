@@ -4,7 +4,7 @@ namespace App\Controller;
 
 use DateTime;
 use App\Entity\Slot;
-use Doctrine\Persistence\ManagerRegistry;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -21,7 +21,7 @@ class ApiController extends AbstractController
     }
 
     #[Route('/api/{id}/edit', name: 'app_api_event_edit', methods: ['PUT'])]
-    public function majEvent(?Slot $slot, Request $request, ManagerRegistry $doctrine): Response
+    public function majEvent(?Slot $slot, Request $request, EntityManagerInterface $em): Response
     {
         $userData = json_decode($request->getContent());
 
@@ -52,7 +52,6 @@ class ApiController extends AbstractController
             $slot->setBackgroundColor($userData->backgroundColor);
             $slot->setTextColor($userData->textColor);
 
-            $em = $doctrine->getManager();
             $em->persist($slot);
             $em->flush();
 
