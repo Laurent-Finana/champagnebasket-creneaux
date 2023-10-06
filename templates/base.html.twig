@@ -41,7 +41,18 @@
 						{% if is_granted('ROLE_PLAYER') %}
 							<a href="{{ path('app_message')}}" class="block mt-4 lg:inline-block lg:mt-0 text-orange-200 hover:text-white mr-10 {% if (app.request.attributes.get('_route') == 'app_message') %}text-white underline{% endif %}">
 								Messagerie
+								{% set notRead = 0 %}
+								{% for message in app.user.received %}
+									{% if message.isRead != true %}{
+										{% set notRead = notRead + 1 %}
+
+										}
+									{% endif %}
+								{% endfor %}
+								<span>({{ notRead }})</span>
 							</a>
+
+
 						{% endif %}
 
 						{% if is_granted('ROLE_ADMIN') %}
@@ -75,7 +86,7 @@
 				</div>
 			</nav>
 			{# 			{% if (app.request.attributes.get('_route') == 'app_calendar_grande_salle' or app.request.attributes.get('_route') == 'app_calendar_petite_salle' or app.request.attributes.get('_route') == 'app_calendar_musculation') %}
-																																																																																																																					 #}
+																																																																																																																																																																																																																																																																																		 #}
 			{% if is_granted('ROLE_COACH') %}
 				<a href="{{ path('app_slot_new')}}" class="inline-block text-sm ms-2 px-2 py-2 leading-none border rounded bg-green-500 text-black border-white hover:border-transparent hover:text-cyan-600 hover:bg-orange-200 mt-4 lg:mt-0">Nouveau créneau</a>
 				<a href="{{ path('app_slot_index')}}" class="inline-block text-sm ms-2 px-2 py-2 leading-none border rounded bg-yellow-500 text-black border-white hover:border-transparent hover:text-cyan-600 hover:bg-orange-200 mt-4 lg:mt-0">Modifier un créneau</a>
@@ -83,7 +94,7 @@
 				<a href="{{ path('app_message_send')}}" class="inline-block text-sm ms-2 px-2 py-2 leading-none border rounded bg-green-500 text-black border-white hover:border-transparent hover:text-cyan-600 hover:bg-orange-200 mt-4 lg:mt-0">Demander un créneau</a>
 			{% endif %}
 			{# 			{% endif %}
-																																																																																																																					 #}
+																																																																																																																																																																																																																																																																																		 #}
 		{% endblock %}
 
 		{% for message in app.flashes("message") %}
@@ -102,4 +113,4 @@
 			<script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js" integrity="sha256-8EcfIJRWyvnu/U0OsfCk05x1JGVmeC2a7sJQHrbWYSA=" crossorigin="anonymous"></script>
 		</body>
 	</html>
-</body>
+</body></html></body>
