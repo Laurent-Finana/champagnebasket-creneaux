@@ -67,7 +67,7 @@
 						{% if is_granted('IS_AUTHENTICATED_FULLY') %}
 							<p class="inline-block text-white">Bonjour
 								<span class="block ml-2 mt-4 lg:inline-block lg:mt-0 text-orange-200 text-xl mr-10">
-									{{ app.user.pseudo }}
+									{{ app.user.firstname }}
 								</span>
 							</p>
 						{% endif %}
@@ -85,7 +85,7 @@
 				</div>
 			</nav>
 			{# 			{% if (app.request.attributes.get('_route') == 'app_calendar_grande_salle' or app.request.attributes.get('_route') == 'app_calendar_petite_salle' or app.request.attributes.get('_route') == 'app_calendar_musculation') %}
-																																																																																																																																																																																																																																																																																																																																																																																					 #}
+																																																																																																																																																																																																																																																																																																																																																																																								 #}
 			{% if is_granted('ROLE_COACH') %}
 				<a href="{{ path('app_slot_new')}}" class="inline-block text-sm ms-2 px-2 py-2 leading-none border rounded bg-green-500 text-black border-white hover:border-transparent hover:text-cyan-600 hover:bg-orange-200 mt-4 lg:mt-0">Nouveau créneau</a>
 				<a href="{{ path('app_slot_index')}}" class="inline-block text-sm ms-2 px-2 py-2 leading-none border rounded bg-yellow-500 text-black border-white hover:border-transparent hover:text-cyan-600 hover:bg-orange-200 mt-4 lg:mt-0">Modifier un créneau</a>
@@ -93,7 +93,7 @@
 				<a href="{{ path('app_message_send')}}" class="inline-block text-sm ms-2 px-2 py-2 leading-none border rounded bg-green-500 text-black border-white hover:border-transparent hover:text-cyan-600 hover:bg-orange-200 mt-4 lg:mt-0">Demander un créneau</a>
 			{% endif %}
 			{# 			{% endif %}
-																																																																																																																																																																																																																																																																																																																																																																																					 #}
+																																																																																																																																																																																																																																																																																																																																																																																								 #}
 		{% endblock %}
 
 		{% for message in app.flashes("message") %}

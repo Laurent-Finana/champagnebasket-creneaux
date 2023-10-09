@@ -8,6 +8,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\ArrayField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ChoiceField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\EmailField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\TelephoneField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 
 class UserCrudController extends AbstractCrudController
@@ -24,7 +25,9 @@ class UserCrudController extends AbstractCrudController
             IdField::new('id')->hideOnForm(),
             EmailField::new('email')->hideWhenUpdating(),
             TextField::new('password')->onlyWhenCreating(),
-            TextField::new('pseudo', 'Nom-Prénom'),
+            TextField::new('firstname', 'Prénom'),
+            TextField::new('lastname', 'Nom'),
+            TelephoneField::new('phoneNumber', 'Numéro de téléphone'),
             ChoiceField::new('roles')->setChoices([
                 'User' => 'ROLE_USER',
                 'Player' => 'ROLE_PLAYER',

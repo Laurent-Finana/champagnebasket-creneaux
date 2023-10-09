@@ -25,14 +25,20 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column]
     private array $roles = [];
 
+    #[ORM\Column(length: 255)]
+    private ?string $firstname = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $lastname = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $phone_number = null;
+
     /**
      * @var string The hashed password
      */
     #[ORM\Column]
     private ?string $password = null;
-
-    #[ORM\Column(length: 255, nullable: true)]
-    private ?string $pseudo = null;
 
     #[ORM\OneToMany(mappedBy: 'user', targetEntity: Slot::class)]
     private Collection $slots;
@@ -96,6 +102,43 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
+    public function getFirstname(): ?string
+    {
+        return $this->firstname;
+    }
+
+    public function setFirstname(string $firstname): static
+    {
+        $this->firstname = $firstname;
+
+        return $this;
+    }
+
+    public function getLastname(): ?string
+    {
+        return $this->lastname;
+    }
+
+    public function setLastname(string $lastname): static
+    {
+        $this->lastname = $lastname;
+
+        return $this;
+    }
+
+    public function getPhoneNumber(): ?string
+    {
+        return $this->phone_number;
+    }
+
+    public function setPhoneNumber(string $phone_number): static
+    {
+        $this->phone_number = $phone_number;
+
+        return $this;
+    }
+
+
     /**
      * @see PasswordAuthenticatedUserInterface
      */
@@ -118,18 +161,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         // If you store any temporary, sensitive data on the user, clear it here
         // $this->plainPassword = null;
-    }
-
-    public function getPseudo(): ?string
-    {
-        return $this->pseudo;
-    }
-
-    public function setPseudo(?string $pseudo): static
-    {
-        $this->pseudo = $pseudo;
-
-        return $this;
     }
 
     /**
