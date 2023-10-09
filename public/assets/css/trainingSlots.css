@@ -2,3 +2,15 @@
   width: 80%;
   margin: auto;
 }
+
+.bg-navbar {
+  background-color: #af9747;
+}
+
+.text-color-blue {
+  color: #01b6ed;
+}
+
+.text-color-pink {
+  color: #e11f90;
+}
