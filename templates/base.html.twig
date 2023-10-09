@@ -55,7 +55,7 @@
 						{% endif %}
 
 						{% if is_granted('ROLE_ADMIN') %}
-							<a href="{{ path('admin')}}" class="inline-block text-sm px-4 py-2 leading-none border rounded text-red-300 border-white hover:border-transparent hover:text-cyan-600 hover:bg-red-300 mt-4 lg:mt-0 {% if (app.request.attributes.get('_route') == 'admin') %}text-white underline{% endif %}">
+							<a href="{{ path('admin')}}" class="inline-block text-sm px-4 py-2 leading-none border rounded text-red-300 border-white hover:border-transparent hover:text-cyan-600 hover:bg-red-300 mt-4 lg:mt-0">
 								Zone Administrateur
 							</a>
 						{% endif %}

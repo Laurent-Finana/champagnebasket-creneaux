@@ -24,7 +24,7 @@ class UserCrudController extends AbstractCrudController
             IdField::new('id')->hideOnForm(),
             EmailField::new('email')->hideWhenUpdating(),
             TextField::new('password')->onlyWhenCreating(),
-            TextField::new('pseudo'),
+            TextField::new('pseudo', 'Nom-Prénom'),
             ChoiceField::new('roles')->setChoices([
                 'User' => 'ROLE_USER',
                 'Player' => 'ROLE_PLAYER',
