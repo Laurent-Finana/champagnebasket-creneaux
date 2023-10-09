@@ -28,7 +28,6 @@ class CalendarController extends AbstractController
                 'start' => $event->getStart()->format('Y-m-d H:i:s'),
                 'end' => $event->getEnd()->format('Y-m-d H:i:s'),
                 'description' => $event->getDescription(),
-                'allDay' => $event->isAllDay(),
                 'backgroundColor' => $event->getBackgroundColor(),
                 'textColor' => $event->getTextColor(),
             ];
@@ -55,7 +54,6 @@ class CalendarController extends AbstractController
                 'start' => $event->getStart()->format('Y-m-d H:i:s'),
                 'end' => $event->getEnd()->format('Y-m-d H:i:s'),
                 'description' => $event->getDescription(),
-                'allDay' => $event->isAllDay(),
                 'backgroundColor' => $event->getBackgroundColor(),
                 'textColor' => $event->getTextColor(),
             ];
@@ -80,7 +78,6 @@ class CalendarController extends AbstractController
                 'start' => $event->getStart()->format('Y-m-d H:i:s'),
                 'end' => $event->getEnd()->format('Y-m-d H:i:s'),
                 'description' => $event->getDescription(),
-                'allDay' => $event->isAllDay(),
                 'backgroundColor' => $event->getBackgroundColor(),
                 'textColor' => $event->getTextColor(),
             ];

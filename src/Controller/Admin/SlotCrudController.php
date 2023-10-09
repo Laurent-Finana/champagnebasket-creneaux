@@ -11,6 +11,9 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextareaField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
+use Symfony\Component\Form\ChoiceList\Factory\Cache\ChoiceValue;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Validator\Constraints\Choice;
 
 class SlotCrudController extends AbstractCrudController
 {
@@ -24,17 +27,22 @@ class SlotCrudController extends AbstractCrudController
     {
         return [
             IdField::new('id')->hideOnForm(),
-            TextField::new('title'),
-            DateTimeField::new('start')->renderAsChoice(),
-            DateTimeField::new('end')->renderAsChoice(),
-            TextareaField::new('description')->hideOnIndex(),
-            BooleanField::new('all_day'),
-            ColorField::new('background_color')->hideOnIndex(),
-            ColorField::new('text_color')->hideOnIndex(),
-            ChoiceField::new('room')->setChoices([
+            TextField::new('title', 'Titre'),
+            DateTimeField::new('start', 'Début')->renderAsChoice(),
+            DateTimeField::new('end', 'Fin')->renderAsChoice(),
+            TextareaField::new('description', 'Description')->hideOnIndex(),
+            ChoiceField::new('background_color', 'Equipe')->setChoices([
+                'ProB' => '#ffff00',
+                'Ligue2' => '#fc87f9',
+                'Espoirs' => '#00b0f0',
+                'U18' => '#92d050',
+                'Espoirs féminines' => '#EE9209'
+            ])->hideOnIndex(),
+            ColorField::new('text_color', 'Couleur du texte')->hideOnIndex(),
+            ChoiceField::new('room', 'Salle')->setChoices([
                 'Grand salle' => '1',
                 'Petite salle' => '2',
-                'Musculation' => '3',
+                'Musculation' => '3'
             ])
         ];
     }

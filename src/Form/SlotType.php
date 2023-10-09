@@ -7,6 +7,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\ColorType;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -15,17 +16,33 @@ class SlotType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('title')
+            ->add('title', TextType::class, [
+                'label' => 'Titre'
+            ])
             ->add('start', DateTimeType::class, [
+                'label' => 'Début',
                 'date_widget' => 'single_text'
             ])
             ->add('end', DateTimeType::class, [
+                'label' => 'Fin',
                 'date_widget' => 'single_text'
             ])
             ->add('description')
-            ->add('background_color', ColorType::class)
-            ->add('text_color', ColorType::class)
+            ->add('background_color', ChoiceType::class, [
+                'label' => 'Equipe',
+                'choices' => [
+                    'ProB' => '#ffff00',
+                    'Ligue2' => '#fc87f9',
+                    'Espoirs' => '#00b0f0',
+                    'U18' => '#92d050',
+                    'Espoirs féminines' => '#EE9209'
+                ],
+            ])
+            ->add('text_color', ColorType::class, [
+                'label' => 'Couleur du texte'
+            ])
             ->add('room', ChoiceType::class, [
+                'label' => 'Salle',
                 'choices' => [
                     'Grande salle' => 1,
                     'Petite salle' => 2,
