@@ -4,44 +4,52 @@
 {% endblock %}
 
 {% block body %}
-	<h1>Slot</h1>
+	<div class="flex flex-col items-center space-y-4">
+		<h1 class="text-2xl text-center py-4">Créneau</h1>
 
-	<table class="table">
-		<tbody>
-			<tr>
-				<th>Id</th>
-				<td>{{ slot.id }}</td>
-			</tr>
-			<tr>
-				<th>Title</th>
-				<td>{{ slot.title }}</td>
-			</tr>
-			<tr>
-				<th>Start</th>
-				<td>{{ slot.start ? slot.start|date('d-m-Y H:i:s') : '' }}</td>
-			</tr>
-			<tr>
-				<th>End</th>
-				<td>{{ slot.end ? slot.end|date('d-m-Y H:i:s') : '' }}</td>
-			</tr>
-			<tr>
-				<th>Description</th>
-				<td>{{ slot.description }}</td>
-			</tr>
-			<tr>
-				<th>Background_color</th>
-				<td>{{ slot.backgroundColor }}</td>
-			</tr>
-			<tr>
-				<th>Text_color</th>
-				<td>{{ slot.textColor }}</td>
-			</tr>
-		</tbody>
-	</table>
+		<table class="table-auto">
+			<tbody class="flex flex-col">
+				<tr>
+					<th class="px-4 py-2">Id</th>
+					<td>{{ slot.id }}</td>
+				</tr>
+				<tr>
+					<th class="px-4 py-2">Titre</th>
+					<td>{{ slot.title }}</td>
+				</tr>
+				<tr>
+					<th class="px-4 py-2">Début</th>
+					<td>{{ slot.start ? slot.start|date('d-m-Y H:i:s') : '' }}</td>
+				</tr>
+				<tr>
+					<th class="px-4 py-2">Fin</th>
+					<td>{{ slot.end ? slot.end|date('d-m-Y H:i:s') : '' }}</td>
+				</tr>
+				<tr>
+					<th class="px-4 py-2">Description</th>
+					<td>{{ slot.description }}</td>
+				</tr>
+				<tr>
+					<th class="px-4 py-2">Equipe</th>
+					{% if slot.backgroundColor == "#ffff00" %}
+						<td>Pro B</td>
+					{% elseif slot.backgroundColor == "#fc87f9" %}
+						<td>Ligue 2</td>
+					{% elseif slot.backgroundColor == "#00b0f0" %}
+						<td>Espoirs</td>
+					{% elseif slot.backgroundColor == "#92d050" %}
+						<td>U18</td>
+					{% elseif slot.backgroundColor == "#EE9209" %}
+						<td>Cdf féminines</td>
+					{% endif %}
+				</tr>
+			</tbody>
+		</table>
 
-	<a href="{{ path('app_slot_index') }}">back to list</a>
+		<a href="{{ path('app_slot_index') }}">Retour à la liste</a>
 
-	<a href="{{ path('app_slot_edit', {'id': slot.id}) }}">edit</a>
+		<a href="{{ path('app_slot_edit', {'id': slot.id}) }}">Modifier</a>
 
-	{{ include('slot/_delete_form.html.twig') }}
+		{{ include('slot/_delete_form.html.twig') }}
+	</div>
 {% endblock %}

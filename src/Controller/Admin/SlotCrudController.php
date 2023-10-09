@@ -36,7 +36,7 @@ class SlotCrudController extends AbstractCrudController
                 'Ligue2' => '#fc87f9',
                 'Espoirs' => '#00b0f0',
                 'U18' => '#92d050',
-                'Espoirs féminines' => '#EE9209'
+                'Cdf féminines' => '#EE9209'
             ])->hideOnIndex(),
             ColorField::new('text_color', 'Couleur du texte')->hideOnIndex(),
             ChoiceField::new('room', 'Salle')->setChoices([

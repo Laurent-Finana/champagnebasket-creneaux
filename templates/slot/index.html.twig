@@ -4,43 +4,56 @@
 {% endblock %}
 
 {% block body %}
-	<h1>Slot index</h1>
-
-	<table class="table">
-		<thead>
-			<tr>
-				<th>Id</th>
-				<th>Title</th>
-				<th>Start</th>
-				<th>End</th>
-				<th>Description</th>
-				<th>Background_color</th>
-				<th>Text_color</th>
-				<th>actions</th>
-			</tr>
-		</thead>
-		<tbody>
-			{% for slot in slots %}
+	<div class="flex flex-col items-center space-y-4">
+		<table class="w-full text-sm text-left">
+			<caption class="caption-top text-2xl text-center py-4">
+				Liste des créneaux réservés
+			</caption>
+			<thead class="text-xs text-gray-700 uppercase">
 				<tr>
-					<td>{{ slot.id }}</td>
-					<td>{{ slot.title }}</td>
-					<td>{{ slot.start ? slot.start|date('d-m-Y H:i:s') : '' }}</td>
-					<td>{{ slot.end ? slot.end|date('d-m-Y H:i:s') : '' }}</td>
-					<td>{{ slot.description }}</td>
-					<td>{{ slot.backgroundColor }}</td>
-					<td>{{ slot.textColor }}</td>
-					<td>
-						<a href="{{ path('app_slot_show', {'id': slot.id}) }}">Voir</a>
-						<a href="{{ path('app_slot_edit', {'id': slot.id}) }}">Modifier</a>
-					</td>
+					<th scope="col" class="px-6 py-3">Id</th>
+					<th scope="col" class="px-6 py-3">Titre</th>
+					<th scope="col" class="px-6 py-3">Début</th>
+					<th scope="col" class="px-6 py-3">Fin</th>
+					<th scope="col" class="px-6 py-3">Description</th>
+					<th scope="col" class="pl-6 pr-8 py-3">Equipe</th>
+					<th scope="col" class="px-6 py-3">Actions</th>
 				</tr>
-			{% else %}
-				<tr>
-					<td colspan="9">Aucun enregistrement trouvé</td>
-				</tr>
-			{% endfor %}
-		</tbody>
-	</table>
+			</thead>
+			<tbody>
+				{% for slot in slots %}
+					<tr class="bg-white border-b">
+						<td class="px-6 py-4">{{ slot.id }}</td>
+						<td class="px-6 py-4">{{ slot.title }}</td>
+						<td class="px-6 py-4">{{ slot.start ? slot.start|date('d-m-Y H:i') : '' }}</td>
+						<td class="px-6 py-4">{{ slot.end ? slot.end|date('d-m-Y H:i') : '' }}</td>
+						<td class="px-6 p-4">{{ slot.description }}</td>
+						<td class="py-4">
+							{% if slot.backgroundColor == "#ffff00" %}
+								<td class="py-4">Pro B</td>
+							{% elseif slot.backgroundColor == "#fc87f9" %}
+								<td class="py-4">Ligue 2</td>
+							{% elseif slot.backgroundColor == "#00b0f0" %}
+								<td class="py-4">Espoirs</td>
+							{% elseif slot.backgroundColor == "#92d050" %}
+								<td class="py-4">U18</td>
+							{% elseif slot.backgroundColor == "#EE9209" %}
+								<td class="py-4">Cdf féminines</td>
+							{% endif %}
+						</td>
+						<td class="py-4">
+							<a href="{{ path('app_slot_show', {'id': slot.id}) }}">Voir</a>
+							<a href="{{ path('app_slot_edit', {'id': slot.id}) }}">Modifier</a>
+						</td>
+					</tr>
+				{% else %}
+					<tr>
+						<td colspan="9">Aucun enregistrement trouvé</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
 
-	<a href="{{ path('app_slot_new') }}">Ajouter un créneau</a>
+		<a href="{{ path('app_slot_new') }}">Ajouter un créneau</a>
+	</div>
 {% endblock %}
