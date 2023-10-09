@@ -24,7 +24,7 @@
 				<div class="flex items-center flex-shrink-0 text-white mr-6">
 					<a href="{{ path('app_main')}}">
 						<img src="{{ asset('output-onlinepngtools.png') }}" alt="Logo training-slots" class="mr-2 lg:inline-block">
-						<span class="font-semibold text-xl tracking-tight">Traing-Slots</span>
+						<span class="font-semibold text-xl tracking-tight">ResaBasketTys</span>
 					</a>
 				</div>
 				<div class="w-full block flex-grow lg:flex lg:items-center lg:w-auto">
@@ -85,7 +85,7 @@
 				</div>
 			</nav>
 			{# 			{% if (app.request.attributes.get('_route') == 'app_calendar_grande_salle' or app.request.attributes.get('_route') == 'app_calendar_petite_salle' or app.request.attributes.get('_route') == 'app_calendar_musculation') %}
-																																																																																																																																																																																																																																																																																																																																																																												 #}
+																																																																																																																																																																																																																																																																																																																																																																																					 #}
 			{% if is_granted('ROLE_COACH') %}
 				<a href="{{ path('app_slot_new')}}" class="inline-block text-sm ms-2 px-2 py-2 leading-none border rounded bg-green-500 text-black border-white hover:border-transparent hover:text-cyan-600 hover:bg-orange-200 mt-4 lg:mt-0">Nouveau créneau</a>
 				<a href="{{ path('app_slot_index')}}" class="inline-block text-sm ms-2 px-2 py-2 leading-none border rounded bg-yellow-500 text-black border-white hover:border-transparent hover:text-cyan-600 hover:bg-orange-200 mt-4 lg:mt-0">Modifier un créneau</a>
@@ -93,7 +93,7 @@
 				<a href="{{ path('app_message_send')}}" class="inline-block text-sm ms-2 px-2 py-2 leading-none border rounded bg-green-500 text-black border-white hover:border-transparent hover:text-cyan-600 hover:bg-orange-200 mt-4 lg:mt-0">Demander un créneau</a>
 			{% endif %}
 			{# 			{% endif %}
-																																																																																																																																																																																																																																																																																																																																																																												 #}
+																																																																																																																																																																																																																																																																																																																																																																																					 #}
 		{% endblock %}
 
 		{% for message in app.flashes("message") %}

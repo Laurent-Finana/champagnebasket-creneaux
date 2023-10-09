@@ -37,7 +37,7 @@ class MessageType extends AbstractType
                 'query_builder' => function (EntityRepository $er): QueryBuilder {
                     return $er->createQueryBuilder('u')
                         ->orderBy('u.pseudo', 'ASC')
-                        ->andWhere('u.roles LIKE \'%ROLE_COACH%\' ');
+                        ->andWhere('u.roles LIKE \'%ROLE_COACH%\'  or u.roles LIKE \'%ROLE_PLAYER%\' ');
                 },
                 "choice_label" => "pseudo",
                 "attr" => [
