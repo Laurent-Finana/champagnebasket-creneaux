@@ -29,6 +29,7 @@ week: 'Semaine',
 list: 'Liste',
 today: 'Aujourd\'hui'
 },
+allDaySlot: false,
 events: {{ data|raw }},
 editable: true,
 
@@ -54,8 +55,7 @@ let userData = {
 "start": e.event.start,
 "end": e.event.end,
 "backgroundColor": e.event.backgroundColor,
-"textColor": e.event.textColor,
-"allDay": e.event.allDay
+"textColor": e.event.textColor
 }
 
 let xhr = new XMLHttpRequest

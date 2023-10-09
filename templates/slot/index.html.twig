@@ -14,7 +14,6 @@
 				<th>Start</th>
 				<th>End</th>
 				<th>Description</th>
-				<th>All_day</th>
 				<th>Background_color</th>
 				<th>Text_color</th>
 				<th>actions</th>
@@ -28,7 +27,6 @@
 					<td>{{ slot.start ? slot.start|date('d-m-Y H:i:s') : '' }}</td>
 					<td>{{ slot.end ? slot.end|date('d-m-Y H:i:s') : '' }}</td>
 					<td>{{ slot.description }}</td>
-					<td>{{ slot.allDay ? 'Yes' : 'No' }}</td>
 					<td>{{ slot.backgroundColor }}</td>
 					<td>{{ slot.textColor }}</td>
 					<td>

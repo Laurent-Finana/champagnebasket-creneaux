@@ -23,7 +23,6 @@ class SlotType extends AbstractType
                 'date_widget' => 'single_text'
             ])
             ->add('description')
-            ->add('all_day')
             ->add('background_color', ColorType::class)
             ->add('text_color', ColorType::class)
             ->add('room', ChoiceType::class, [

@@ -26,9 +26,6 @@ class Slot
     #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $description = null;
 
-    #[ORM\Column]
-    private ?bool $all_day = null;
-
     #[ORM\Column(length: 7, nullable: true)]
     private ?string $background_color = null;
 
@@ -91,18 +88,6 @@ class Slot
     public function setDescription(?string $description): static
     {
         $this->description = $description;
-
-        return $this;
-    }
-
-    public function isAllDay(): ?bool
-    {
-        return $this->all_day;
-    }
-
-    public function setAllDay(bool $all_day): static
-    {
-        $this->all_day = $all_day;
 
         return $this;
     }
