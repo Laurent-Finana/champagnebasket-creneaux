@@ -62,7 +62,7 @@
 					</div>
 					<div>
 
-						{% if is_granted('IS_AUTHENTICATED_FULLY') %}
+						{% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
 							<p class="inline-block text-white">Bonjour
 								<span class="block ml-2 mt-4 lg:inline-block lg:mt-0 text-orange-200 text-xl mr-10">
 									{{ app.user.firstname }}

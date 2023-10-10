@@ -42,11 +42,7 @@ class ApiController extends AbstractController
 
             $slot->setTitle($userData->title);
             $slot->setStart(new DateTime($userData->start));
-            if ($userData->allDay) {
-                $slot->setEnd(new DateTime($userData->start));
-            } else {
-                $slot->setEnd(new DateTime($userData->end));
-            }
+            $slot->setEnd(new DateTime($userData->end));
             $slot->setDescription($userData->description);
             $slot->setBackgroundColor($userData->backgroundColor);
             $slot->setTextColor($userData->textColor);
