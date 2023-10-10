@@ -22,7 +22,7 @@
 				<div class="flex items-center flex-shrink-0 text-white mr-6">
 					<a href="{{ path('app_main')}}">
 						<img src="{{ asset('output-onlinepngtools.png') }}" alt="Logo training-slots" class="mr-2 lg:inline-block">
-						<span class="font-semibold text-xl tracking-tight">ResaBasketTys</span>
+						<span class="font-semibold text-xl">ResaBasketTys</span>
 					</a>
 				</div>
 				<div class="w-full block flex-grow lg:flex lg:items-center lg:w-auto">
@@ -53,7 +53,7 @@
 						{% endif %}
 
 						{% if is_granted('ROLE_ADMIN') %}
-							<a href="{{ path('admin')}}" class="inline-block text-sm px-4 py-2 leading-none border rounded text-red-300 border-white hover:border-transparent hover:text-cyan-600 hover:bg-red-300 mt-4 lg:mt-0">
+							<a href="{{ path('admin')}}" class="inline-block text-sm px-4 py-2 leading-none border rounded-lg text-red-300 border-white hover:border-transparent hover:text-cyan-600 hover:bg-red-300 mt-4 lg:mt-0">
 								Zone Administrateur
 							</a>
 						{% endif %}
@@ -72,9 +72,9 @@
 						{% endif %}
 
 						{% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
-							<a href="{{ path('app_logout')}}" class="inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-cyan-600 hover:bg-orange-200 mt-4 lg:mt-0">Déconnexion</a>
+							<a href="{{ path('app_logout')}}" class="inline-block text-sm px-4 py-2 leading-none border rounded-lg text-white border-white hover:border-transparent hover:text-cyan-600 hover:bg-orange-200 mt-4 lg:mt-0">Déconnexion</a>
 						{% else %}
-							<a href="{{ path('app_login')}}" class="ml-12 inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-cyan-600 hover:bg-orange-200 mt-4 lg:mt-0">Connexion</a>
+							<a href="{{ path('app_login')}}" class="ml-12 inline-block text-sm px-4 py-2 leading-none border rounded-lg text-white border-white hover:border-transparent hover:text-cyan-600 hover:bg-orange-200 mt-4 lg:mt-0">Connexion</a>
 							<p class="mt-2">
 								<a href="{{ path('app_register') }}" class="text-sm">Pas encore inscrit ? Créer un compte</a>
 							</p>
@@ -86,16 +86,14 @@
 			<div class="flex flex-row bg-slate-200">
 				<div class="flex flex-col bg-gray-100">
 					{% if is_granted('ROLE_COACH') %}
-						<button class="m-4">
-							<a href="{{ path('app_slot_new')}}" class="text-sm ms-2 px-2 py-2 leading-none border rounded-lg bg-green-500 text-black border-white hover:border-transparent hover:text-cyan-600 hover:bg-orange-200 mt-4 lg:mt-0">Nouveau créneau</a>
-						</button>
-						<button class="m-2">
-							<a href="{{ path('app_slot_index')}}" class="text-sm ms-2 px-2 py-2 leading-none border rounded-lg bg-yellow-500 text-black border-white hover:border-transparent hover:text-cyan-600 hover:bg-orange-200 mt-4 lg:mt-0">Modifier un créneau</a>
-						</button>
+
+						<a href="{{ path('app_slot_new')}}" class="text-sm text-center m-4 px-2 py-2 leading-none border rounded-lg bg-green-500 text-black border-white hover:border-transparent hover:text-cyan-600 hover:bg-orange-200">Nouveau créneau</a>
+
+
+						<a href="{{ path('app_slot_index')}}" class="text-sm text-center mx-4 px-2 py-2 leading-none border rounded-lg bg-amber-200 text-black border-white hover:border-transparent hover:text-cyan-600 hover:bg-orange-200">Modifier un créneau</a>
+
 					{% elseif is_granted('ROLE_PLAYER') %}
-						<button class="m-2">
-							<a href="{{ path('app_message_send')}}" class="text-sm ms-2 px-2 py-2 leading-none border rounded-lg bg-green-500 text-black border-white hover:border-transparent hover:text-cyan-600 hover:bg-orange-200 mt-4 lg:mt-0">Demander un créneau</a>
-						</button>
+						<a href="{{ path('app_message_send')}}" class="text-sm text-center m-4 px-2 py-2 leading-none border rounded-lg bg-green-500 text-black border-white hover:border-transparent hover:text-cyan-600 hover:bg-orange-200">Demander un créneau</a>
 					{% endif %}
 				</div>
 

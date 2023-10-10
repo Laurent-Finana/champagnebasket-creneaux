@@ -6,54 +6,51 @@
 {% block body %}
 	<div class="flex flex-col items-center space-y-4">
 		<table class="w-full text-sm text-left">
-			<caption class="caption-top text-2xl text-center py-4">
+			<caption class="caption-top text-2xl text-center py-6">
 				Liste des créneaux réservés
 			</caption>
 			<thead class="text-xs text-gray-700 uppercase">
 				<tr>
-					<th scope="col" class="px-6 py-3">Id</th>
-					<th scope="col" class="px-6 py-3">Titre</th>
-					<th scope="col" class="px-6 py-3">Début</th>
-					<th scope="col" class="px-6 py-3">Fin</th>
-					<th scope="col" class="px-6 py-3">Description</th>
-					<th scope="col" class="pl-6 pr-8 py-3">Equipe</th>
-					<th scope="col" class="px-6 py-3">Actions</th>
+					<th scope="col" class="px-6 py-3 text-center">Id</th>
+					<th scope="col" class="px-6 py-3 text-center">Titre</th>
+					<th scope="col" class="px-6 py-3 text-center">Début</th>
+					<th scope="col" class="px-6 py-3 text-center">Fin</th>
+					<th scope="col" class="px-6 py-3 text-center">Description</th>
+					<th scope="col" class="pl-6 pr-8 py-3 text-center">Equipe</th>
+					<th scope="col" class="px-6 py-3 text-center">Actions</th>
 				</tr>
 			</thead>
 			<tbody>
 				{% for slot in slots %}
-					<tr class="bg-white border-b">
-						<td class="px-6 py-4">{{ slot.id }}</td>
-						<td class="px-6 py-4">{{ slot.title }}</td>
-						<td class="px-6 py-4">{{ slot.start ? slot.start|date('d-m-Y H:i') : '' }}</td>
-						<td class="px-6 py-4">{{ slot.end ? slot.end|date('d-m-Y H:i') : '' }}</td>
-						<td class="px-6 p-4">{{ slot.description }}</td>
-						<td class="py-4">
-							{% if slot.backgroundColor == "#ffff00" %}
-								<td class="py-4">Pro B</td>
-							{% elseif slot.backgroundColor == "#fc87f9" %}
-								<td class="py-4">Ligue 2</td>
-							{% elseif slot.backgroundColor == "#00b0f0" %}
-								<td class="py-4">Espoirs</td>
-							{% elseif slot.backgroundColor == "#92d050" %}
-								<td class="py-4">U18</td>
-							{% elseif slot.backgroundColor == "#EE9209" %}
-								<td class="py-4">Cdf féminines</td>
-							{% endif %}
-						</td>
-						<td class="py-4">
-							<a href="{{ path('app_slot_show', {'id': slot.id}) }}">Voir</a>
-							<a href="{{ path('app_slot_edit', {'id': slot.id}) }}">Modifier</a>
+					<tr class="bg-white border-b hover:bg-gray-100">
+						<td class="px-6 py-4 text-center">{{ slot.id }}</td>
+						<td class="px-6 py-4 text-center">{{ slot.title }}</td>
+						<td class="px-6 py-4 text-center">{{ slot.start ? slot.start|date('d-m-Y H:i') : '' }}</td>
+						<td class="px-6 py-4 text-center">{{ slot.end ? slot.end|date('d-m-Y H:i') : '' }}</td>
+						<td class="px-6 p-4 text-center">{{ slot.description }}</td>
+						{% if slot.backgroundColor == "#ffff00" %}
+							<td class="px-6 py-4 text-center">Pro B</td>
+						{% elseif slot.backgroundColor == "#fc87f9" %}
+							<td class="px-6 py-4 text-center">Ligue 2</td>
+						{% elseif slot.backgroundColor == "#00b0f0" %}
+							<td class="px-6 py-4 text-center">Espoirs</td>
+						{% elseif slot.backgroundColor == "#92d050" %}
+							<td class="px-6 py-4 text-center">U18</td>
+						{% elseif slot.backgroundColor == "#EE9209" %}
+							<td class="px-6 py-4 text-center">Cdf féminines</td>
+						{% endif %}
+						<td class="px-6 py-4 text-center">
+							<a href="{{ path('app_slot_show', {'id': slot.id}) }}" class="text-sm text-center px-2 py-2 leading-none border rounded-lg bg-sky-500 text-black hover:border-transparent hover:text-cyan-600 hover:bg-orange-200">Voir</a>
+							<a href="{{ path('app_slot_edit', {'id': slot.id}) }}" class="text-sm text-center px-2 py-2 leading-none border rounded-lg bg-amber-200 text-black hover:border-transparent hover:text-cyan-600 hover:bg-orange-200">Modifier</a>
 						</td>
 					</tr>
-				{% else %}
-					<tr>
-						<td colspan="9">Aucun enregistrement trouvé</td>
-					</tr>
-				{% endfor %}
-			</tbody>
-		</table>
+				</td>
 
-		<a href="{{ path('app_slot_new') }}">Ajouter un créneau</a>
-	</div>
-{% endblock %}
+			</tbody>
+		</tr>
+	{% else %}
+		<tr>
+			<td colspan="9">Aucun enregistrement trouvé</td>
+		</tr>
+	{% endfor %}
+</tbody></table><a href="{{ path('app_slot_new') }}">Ajouter un créneau</a></div>{% endblock %}

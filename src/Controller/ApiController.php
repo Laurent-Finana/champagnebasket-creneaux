@@ -47,7 +47,6 @@ class ApiController extends AbstractController
             } else {
                 $slot->setEnd(new DateTime($userData->end));
             }
-            $slot->setAllDay($userData->allDay);
             $slot->setDescription($userData->description);
             $slot->setBackgroundColor($userData->backgroundColor);
             $slot->setTextColor($userData->textColor);

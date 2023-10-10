@@ -9,10 +9,9 @@
 
 {% block javascripts %}
 
-	{% if is_granted('ROLE_COACH') %}
-		<script>
+	<script>
 
-			window.onload = () => {
+		window.onload = () => {
 let calendarElt = document.querySelector("#calendrier");
 
 let calendar = new FullCalendar.Calendar(calendarElt, {
@@ -69,40 +68,6 @@ xhr.send(JSON.stringify(userData))
 
 calendar.render();
 }
-		</script>
-
-	{% else %}
-
-		<script>
-			window.onload = () => {
-let calendarElt = document.querySelector("#calendrier");
-
-let calendar = new FullCalendar.Calendar(calendarElt, {
-initialView: 'timeGridWeek',
-locale: 'fr',
-firstDay: 1,
-timeZone: 'Europe/Paris',
-headerToolbar: {
-left: 'dayGridMonth,timeGridWeek,list',
-center: 'title',
-end: 'today, prev,next'
-},
-buttonText: {
-month: 'Mois',
-week: 'Semaine',
-list: 'Liste',
-today: 'Aujourd\'hui'
-},
-events: {{ data|raw }},
-
-eventClick: function (info) {
-alert('Description: ' + info.event.extendedProps.description);
-}
-});
-calendar.render();
-}
-		</script>
-
-	{% endif %}
+	</script>
 
 {% endblock %}
