@@ -4,8 +4,15 @@
 {% endblock %}
 
 {% block body %}
-
-	{{ include('slot/_form.html.twig') }}
-
-	<a href="{{ path('app_slot_index') }}">Retour à la liste</a>
+	<section class="container h-screen">
+		<div class="row text-center">
+			<div class="col space-y-8">
+				<h1 class="my-4 text-2xl text-center">Nouveau créneau</h1>
+				{{ include('slot/_form.html.twig') }}
+				<div class="m-0">
+					<a href="{{ path('app_slot_index') }}" class="btn text-sm text-center px-2 py-2 rounded-lg bg-sky-500 text-black hover:border-transparent hover:text-cyan-600 hover:bg-orange-200">Retour à la liste</a>
+				</div>
+			</div>
+		</div>
+	</section>
 {% endblock %}

@@ -17,7 +17,10 @@ class SlotType extends AbstractType
     {
         $builder
             ->add('title', TextType::class, [
-                'label' => 'Titre'
+                'label' => 'Titre',
+                "attr" => [
+                    "class" => "mx-4"
+                ]
             ])
             ->add('start', DateTimeType::class, [
                 'label' => 'Début',

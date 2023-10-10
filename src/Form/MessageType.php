@@ -22,13 +22,13 @@ class MessageType extends AbstractType
             ->add('title', TextType::class, [
                 "label" => "Titre",
                 "attr" => [
-                    "class" => "form-control"
+                    "class" => "m-4"
                 ]
             ])
             ->add('content', TextareaType::class, [
                 "label" => "Message",
                 "attr" => [
-                    "class" => "form-control"
+                    "class" => "m-4"
                 ]
             ])
             ->add('recipient', EntityType::class, [
@@ -36,17 +36,19 @@ class MessageType extends AbstractType
                 "class" => User::class,
                 'query_builder' => function (EntityRepository $er): QueryBuilder {
                     return $er->createQueryBuilder('u')
-                        ->orderBy('u.pseudo', 'ASC')
+                        ->orderBy('u.roles', 'ASC')
                         ->andWhere('u.roles LIKE \'%ROLE_COACH%\'  or u.roles LIKE \'%ROLE_PLAYER%\' ');
                 },
-                "choice_label" => "pseudo",
+                "choice_label" => function ($allChoices) {
+                    return $allChoices->getFirstName() . " " . $allChoices->getLastName();
+                },
                 "attr" => [
-                    "class" => "form-control"
+                    "class" => "m-4"
                 ]
             ])
             ->add('envoyer', SubmitType::class, [
                 "attr" => [
-                    "class" => "btn bg-primary text-white"
+                    "class" => "btn text-sm text-center my-2 px-2 py-2 rounded-lg bg-green-500 text-black hover:border-transparent hover:text-cyan-600 hover:bg-orange-200"
                 ]
             ]);
     }

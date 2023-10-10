@@ -14,7 +14,7 @@ use Symfony\Component\Security\Http\Attribute\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 #[Route('/slot')]
-#[IsGranted(new Expression('is_granted("ROLE_ADMIN") or is_granted("ROLE_COACH")'))]
+#[IsGranted(new Expression('is_granted("ROLE_COACH")'))]
 class SlotController extends AbstractController
 {
     #[Route('/', name: 'app_slot_index', methods: ['GET'])]
