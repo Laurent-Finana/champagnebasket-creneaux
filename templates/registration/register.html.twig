@@ -4,17 +4,19 @@
 {% endblock %}
 
 {% block body %}
-	<h1>Inscription</h1>
+	<div class="my-10 max-w-md mx-auto">
+		<h1 class="mb-8 text-2xl text-center">Inscription</h1>
 
-	{{ form_errors(registrationForm) }}
+		{{ form_errors(registrationForm) }}
 
-	{{ form_start(registrationForm) }}
-	{{ form_row(registrationForm.email) }}
-	{{ form_row(registrationForm.firstname) }}
-	{{ form_row(registrationForm.lastname) }}
-	{{ form_row(registrationForm.phoneNumber) }}
-	{{ form_row(registrationForm.plainPassword) }}
+		{{ form_start(registrationForm) }}
+		{{ form_row(registrationForm.email) }}
+		{{ form_row(registrationForm.firstname) }}
+		{{ form_row(registrationForm.lastname) }}
+		{{ form_row(registrationForm.phoneNumber) }}
+		{{ form_row(registrationForm.plainPassword) }}
 
-	<button type="submit" class="btn">Register</button>
-	{{ form_end(registrationForm) }}
+		<button type="submit" class="rounded-md bg-cyan-600 my-2 block w-full p-2 text-sm font-semibold text-white shadow-sm hover:text-cyan-600 hover:bg-orange-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">S'enregistrer</button>
+		{{ form_end(registrationForm) }}
+	</div>
 {% endblock %}
