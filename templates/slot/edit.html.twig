@@ -1,14 +1,14 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Edit Slot
+{% block title %}Modifier un créneau
 {% endblock %}
 
 {% block body %}
-	<h1 class="text-2xl text-center m-2 py-4">Modifier le créneau</h1>
-	<div class="flex flex-col space-y-2">
+	<div class="my-10 max-w-md mx-auto">
+		<h1 class="mb-8 text-2xl text-center">Modifier le créneau</h1>
 		{{ include('slot/_form.html.twig', {'button_label': 'Mettre à jour'}) }}
 
-		<a href="{{ path('app_slot_index') }}" class="w-32 text-sm text-center px-2 py-2 border rounded-lg bg-sky-500 text-black hover:border-transparent hover:text-cyan-600 hover:bg-orange-200">Retour à la liste</a>
+		<a href="{{ path('app_slot_index') }}" class="block text-sm text-center p-2 border rounded-lg bg-sky-500 text-black hover:border-transparent hover:text-cyan-600 hover:bg-orange-200">Retour à la liste</a>
 
 		{{ include('slot/_delete_form.html.twig') }}
 	</div>
