@@ -1,9 +1,10 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Slot
+{% block title %}Créneau
 {% endblock %}
 
 {% block body %}
+
 	<div class="flex flex-col items-center">
 		<h1 class="text-2xl text-center m-2 py-4">Créneau</h1>
 
@@ -45,9 +46,9 @@
 				</tr>
 			</tbody>
 		</table>
-		<a href="{{ path('app_slot_index') }}" class="text-sm text-center my-2 px-2 py-2 border rounded-lg bg-sky-500 text-black hover:border-transparent hover:text-cyan-600 hover:bg-orange-200">Retour à la liste</a>
 
-		<a href="{{ path('app_slot_edit', {'id': slot.id}) }}" class="text-sm mb-2 text-center px-2 py-2 border rounded-lg bg-amber-200 text-black hover:border-transparent hover:text-cyan-600 hover:bg-orange-200">Modifier</a>
+		<a href="{{ path('app_slot_edit', {'id': slot.id}) }}" class="text-sm text-center my-2 p-2 border rounded-lg bg-amber-200 text-black hover:border-transparent hover:text-cyan-600 hover:bg-orange-200">Modifier</a>
+		<a href="{{ path('app_slot_index') }}" class="text-sm text-center p-2 border rounded-lg bg-sky-500 text-black hover:border-transparent hover:text-cyan-600 hover:bg-orange-200">Retour à la liste</a>
 		{{ include('slot/_delete_form.html.twig') }}
 	</div>
 {% endblock %}

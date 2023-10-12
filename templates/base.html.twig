@@ -16,7 +16,7 @@
 			{{ encore_entry_script_tags('app') }}
 		{% endblock %}
 	</head>
-	<body>
+	<body class="h-screen">
 		{% block nav %}
 			<nav class="flex items-center justify-between flex-wrap bg-navbar p-6">
 				<div class="flex items-center flex-shrink-0 text-white mr-6">
@@ -106,11 +106,10 @@
 				</div>
 			{% endfor %}
 
-			<div class="container mx-auto h-full"> {% block body %}{% endblock %}
+			<div class="container mx-auto"> {% block body %}{% endblock %}
 				</div>
 
 			</div>
-
 			<script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js" integrity="sha256-8EcfIJRWyvnu/U0OsfCk05x1JGVmeC2a7sJQHrbWYSA=" crossorigin="anonymous"></script>
 		</body>
 	</html>
