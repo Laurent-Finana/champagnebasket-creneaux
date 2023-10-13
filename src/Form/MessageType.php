@@ -21,15 +21,9 @@ class MessageType extends AbstractType
         $builder
             ->add('title', TextType::class, [
                 "label" => "Titre",
-                "attr" => [
-                    "class" => "m-4"
-                ]
             ])
             ->add('content', TextareaType::class, [
                 "label" => "Message",
-                "attr" => [
-                    "class" => "m-4"
-                ]
             ])
             ->add('recipient', EntityType::class, [
                 "label" => "Destinataire",
@@ -42,13 +36,10 @@ class MessageType extends AbstractType
                 "choice_label" => function ($allChoices) {
                     return $allChoices->getFirstName() . " " . $allChoices->getLastName();
                 },
-                "attr" => [
-                    "class" => "m-4"
-                ]
             ])
             ->add('envoyer', SubmitType::class, [
                 "attr" => [
-                    "class" => "btn text-sm text-center my-2 px-2 py-2 rounded-lg bg-green-500 text-black hover:border-transparent hover:text-cyan-600 hover:bg-orange-200"
+                    "class" => "text-sm text-center my-2 px-2 py-2 rounded-lg bg-green-500 text-black hover:border-transparent hover:text-cyan-600 hover:bg-orange-200"
                 ]
             ]);
     }

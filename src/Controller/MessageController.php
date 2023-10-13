@@ -49,8 +49,9 @@ class MessageController extends AbstractController
     }
 
     #[Route('/received', name: 'app_message_received')]
-    public function received(): Response
+    public function received(MessageRepository $messageRepository): Response
     {
+
         return $this->render('message/received.html.twig');
     }
 
@@ -60,13 +61,22 @@ class MessageController extends AbstractController
         return $this->render('message/sent.html.twig');
     }
 
-    #[Route('/read/{id}', name: 'app_message_read')]
-    public function read(Message $message, EntityManagerInterface $em): Response
+    #[Route('/read/received/{id}', name: 'app_message_read_received')]
+    public function read_received(Message $message, EntityManagerInterface $em): Response
     {
         $message->setIsRead(true);
         $em->persist($message);
         $em->flush();
-        return $this->render('message/read.html.twig', compact("message"));
+        return $this->render('message/read-received.html.twig', compact("message"));
+    }
+
+    #[Route('/read/sent/{id}', name: 'app_message_read_sent')]
+    public function read_sent(Message $message, EntityManagerInterface $em): Response
+    {
+        $message->setIsRead(true);
+        $em->persist($message);
+        $em->flush();
+        return $this->render('message/read-sent.html.twig', compact("message"));
     }
 
     #[Route('/delete/{id}', name: 'app_message_delete')]

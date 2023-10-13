@@ -1,18 +1,16 @@
-{% extends 'message/_layout-message.html.twig' %}
+{% extends 'base.html.twig' %}
 
 {% block title %}Messagerie
 {% endblock %}
 
 {% block body %}
-	<section class="container h-screen">
-		<div class="row text-center">
-			<div class="col space-y-8">
-				<h1 class="m-4 text-2xl text-center">Envoyer un message</h1>
-				{{ form(form) }}
-					<a class="btn text-sm text-center my-4 px-2 py-2 rounded-lg bg-sky-500 text-black hover:border-transparent hover:text-cyan-600 hover:bg-orange-200" href="{{ path('app_message') }}">
-						Retour
-					</a>
-				</div>
+	<div class="my-20 max-w-md mx-auto">
+		<h1 class="mb-8 text-2xl text-center">Envoyer un message</h1>
+		<div class="inline">
+			{{ form(form) }}
+				<a class="btn text-sm text-center my-4 px-2 py-2 rounded-lg bg-sky-500 text-black hover:border-transparent hover:text-cyan-600 hover:bg-orange-200" href="{{ path('app_message_received') }}">
+					Retour
+				</a>
 			</div>
-		</section>
+		</div>
 	{% endblock %}

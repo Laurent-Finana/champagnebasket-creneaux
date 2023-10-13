@@ -16,7 +16,7 @@
 			{{ encore_entry_script_tags('app') }}
 		{% endblock %}
 	</head>
-	<body class="h-screen">
+	<body class="bg-slate-200">
 		{% block nav %}
 			<nav class="flex items-center justify-between flex-wrap bg-navbar p-6">
 				<div class="flex items-center flex-shrink-0 text-white mr-6">
@@ -37,7 +37,7 @@
 							Musculation
 						</a>
 						{% if is_granted('ROLE_PLAYER') %}
-							<a href="{{ path('app_message')}}" class="block mt-4 lg:inline-block lg:mt-0 text-orange-200 hover:text-white mr-10 {% if (app.request.attributes.get('_route') == 'app_message') %}text-white underline{% endif %}">
+							<a href="{{ path('app_message_received')}}" class="block mt-4 lg:inline-block lg:mt-0 text-orange-200 hover:text-white mr-10 {% if (app.request.attributes.get('_route') == 'app_message') %}text-white underline{% endif %}">
 								Messagerie
 								<div class="hidden">
 									{% set notRead = 0 %}
@@ -83,8 +83,8 @@
 					</div>
 				</div>
 			</nav>
-			<div class="flex flex-row bg-slate-200">
-				<div class="flex flex-col bg-gray-100">
+			<div class="flex flex-row h-screen">
+				<div class="flex flex-col bg-gray-100 h-full">
 					{% if is_granted('ROLE_COACH') %}
 
 						<a href="{{ path('app_slot_new')}}" class="text-sm text-center m-4 px-2 py-2 border rounded-lg bg-green-500 text-black border-white hover:border-transparent hover:text-cyan-600 hover:bg-orange-200">Nouveau créneau</a>
@@ -106,14 +106,10 @@
 				</div>
 			{% endfor %}
 
-			<div class="container mx-auto">
-				{% block body %}
-					{% block aside %}{% endblock %}
+			<div class="container mx-auto"> {% block body %}{% endblock %}
+				</div>
 
-				{% endblock %}
 			</div>
-
-		</div>
-		<script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js" integrity="sha256-8EcfIJRWyvnu/U0OsfCk05x1JGVmeC2a7sJQHrbWYSA=" crossorigin="anonymous"></script>
-	</body>
-</html>
+			<script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js" integrity="sha256-8EcfIJRWyvnu/U0OsfCk05x1JGVmeC2a7sJQHrbWYSA=" crossorigin="anonymous"></script>
+		</body>
+	</html>

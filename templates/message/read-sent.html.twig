@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Messagerie
+{% endblock %}
+
+
+{% block body %}
+
+	<section class="">
+		<div class="">
+			<div class="">
+				<h1>Messagerie</h1>
+				<h2>{{ message.title }}</h2>
+				<p>Message à :
+					{{ message.recipient.firstname }}
+					{{ message.recipient.lastname }}</p>
+				<p>Le :
+					{{ message.createdAt|date }}</p>
+				<div>{{ message.content }}</div>
+
+				<a href="{{ path('app_message_received')}}" class="text-sm text-center mx-4 px-2 py-2 border rounded-lg bg-amber-200 text-black border-white hover:border-transparent hover:text-cyan-600 hover:bg-orange-200">Boîte de réception</a>
+			</div>
+		</div>
+	</section>
+
+{% endblock %}

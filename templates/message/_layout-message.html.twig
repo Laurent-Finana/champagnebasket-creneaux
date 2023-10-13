@@ -5,24 +5,20 @@
 
 
 {% block body %}
-
-	<section class="text-center">
-		<div class="row">
-			<div class="col">
-				<h1>Messagerie</h1>
-				<p>
-					<a href="{{ path('app_message_received') }}">Boîte de réception :
-						{{ app.user.received|length}}
-					</a>
-				</p>
-				<p>
-					<a href="{{ path('app_message_sent') }}">Eléments envoyés :
-						{{ app.user.sent|length}}
-					</a>
-				</p>
-				<a href="{{ path('app_message_send')}}" class="btn btn-primary">Envoyer un message</a>
-			</div>
+	<div class="my-10 max-w-md mx-auto">
+		<h1 class="mb-8 text-2xl text-center">Messagerie</h1>
+		<div class="flex flex-col">
+			<p class="my-4">
+				<a href="{{ path('app_message_received') }}">Boîte de réception :
+					{{ app.user.received|length}}
+				</a>
+			</p>
+			<p>
+				<a href="{{ path('app_message_sent') }}">Eléments envoyés :
+					{{ app.user.sent|length}}
+				</a>
+			</p>
+			<a href="{{ path('app_message_send')}}" class="my-4">Envoyer un message</a>
 		</div>
-	</section>
-
-{% endblock %}
+	</div>
+</div></section>{% endblock %}
