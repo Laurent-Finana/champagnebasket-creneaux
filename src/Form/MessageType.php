@@ -21,6 +21,7 @@ class MessageType extends AbstractType
         $builder
             ->add('title', TextType::class, [
                 "label" => "Titre",
+                "required" => false
             ])
             ->add('content', TextareaType::class, [
                 "label" => "Message",
