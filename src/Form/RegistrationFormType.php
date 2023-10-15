@@ -40,20 +40,26 @@ class RegistrationFormType extends AbstractType
                         'toggle' => true,
                         'hidden_label' => 'Masquer',
                         'visible_label' => 'Afficher',
+                        'attr' => [
+                            'placeholder' => 'Entrez votre mot de passe',
+                        ]
                     ],
                     'second_options' => [
                         'label' => 'Confirmation du mot de passe',
                         'toggle' => true,
                         'hidden_label' => 'Masquer',
                         'visible_label' => 'Afficher',
+                        'attr' => [
+                            'placeholder' => 'Confirmez votre mot de passe',
+                        ]
 
                     ],
                     'mapped' => false,
                     'attr' => ['autocomplete' => 'new-password'],
                     'constraints' => [
-                        new NotBlank([
+                        /* new NotBlank([
                             'message' => 'Merci d\'entrer un mot de passe',
-                        ]),
+                        ]), */
                         new Regex(
                             '/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*\-+_\.]).{8,}$/',
                             "Le mot de passe doit contenir au minimum 8 caractères, une majuscule, un chiffre et un caractère spécial"
