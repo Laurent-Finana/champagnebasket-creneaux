@@ -29,7 +29,9 @@ class MessageRepository extends ServiceEntityRepository
     public function findAllOrderedByDate()
     {
         return $this->createQueryBuilder('m')
-            ->orderBy('m.created_at', 'DESC');
+            ->orderBy('m.created_at', 'DESC')
+            ->getQuery()
+            ->getResult();
     }
 
     //    /**

@@ -51,8 +51,11 @@ class MessageController extends AbstractController
     #[Route('/received', name: 'app_message_received')]
     public function received(MessageRepository $messageRepository): Response
     {
+        $messages = $messageRepository->findAllOrderedByDate();
 
-        return $this->render('message/received.html.twig');
+        return $this->render('message/received.html.twig', [
+            "messages" => $messages
+        ]);
     }
 
     #[Route('/sent', name: 'app_message_sent')]
