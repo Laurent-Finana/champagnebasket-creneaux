@@ -39,8 +39,8 @@ class MessageController extends AbstractController
             $em->persist($message);
             $em->flush();
 
-            $this->addFlash("message", "Message envoyé avec succès.");
-            return $this->redirectToRoute("app_message");
+            $this->addFlash("green", "Message envoyé avec succès.");
+            return $this->redirectToRoute("app_message_received");
         }
 
         return $this->render("message/send.html.twig", [
@@ -88,6 +88,7 @@ class MessageController extends AbstractController
         $em->remove($message);
         $em->flush();
 
+        $this->addFlash("red", "Le message a bien été supprimé.");
         return $this->redirectToRoute("app_message_received");
     }
 }

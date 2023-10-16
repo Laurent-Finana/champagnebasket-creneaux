@@ -7,7 +7,7 @@
 	<div class="my-20 max-w-md mx-auto">
 		<h1 class="mb-8 text-2xl text-center">Envoyer un message</h1>
 		<div class="inline">
-			{{ form(form) }}
+			{{ form(form, {'attr': {'novalidate': 'novalidate'}})}}
 				<a class="text-sm text-center my-4 p-2 rounded-lg bg-sky-500 text-black hover:border-transparent hover:text-cyan-600 hover:bg-orange-200" href="{{ path('app_message_received') }}">
 					Retour
 				</a>

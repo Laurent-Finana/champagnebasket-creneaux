@@ -27,7 +27,12 @@ class RegistrationFormType extends AbstractType
                 'label' => 'Nom'
             ])
             ->add('phoneNumber', TelType::class, [
-                'label' => 'Téléphone'
+                'label' => 'Téléphone',
+                'constraints' => [
+                    new NotBlank([
+                        'message' => 'Merci d\'entrer un numéro de téléphone',
+                    ]),
+                ]
             ])
             ->add(
                 'plainPassword',
@@ -57,11 +62,11 @@ class RegistrationFormType extends AbstractType
                     'mapped' => false,
                     'attr' => ['autocomplete' => 'new-password'],
                     'constraints' => [
-                        /* new NotBlank([
+                        new NotBlank([
                             'message' => 'Merci d\'entrer un mot de passe',
-                        ]), */
+                        ]),
                         new Regex(
-                            '/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*\-+_\.]).{8,}$/',
+                            '/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*\-+_\.\/]).{8,}$/',
                             "Le mot de passe doit contenir au minimum 8 caractères, une majuscule, un chiffre et un caractère spécial"
                         ),
                         new Length([

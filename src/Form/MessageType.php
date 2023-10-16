@@ -13,6 +13,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Symfony\Component\Validator\Constraints\NotBlank;
 
 class MessageType extends AbstractType
 {
@@ -25,6 +26,11 @@ class MessageType extends AbstractType
             ])
             ->add('content', TextareaType::class, [
                 "label" => "Message",
+                'constraints' => [
+                    new NotBlank([
+                        'message' => 'Merci d\'ajouter votre message',
+                    ]),
+                ]
             ])
             ->add('recipient', EntityType::class, [
                 "label" => "Destinataire",

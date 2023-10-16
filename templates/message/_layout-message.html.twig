@@ -7,6 +7,9 @@
 {% block body %}
 	<div class="my-10 max-w-md mx-auto">
 		<h1 class="mb-8 text-2xl text-center">Messagerie</h1>
+
+		{{ include ('_flash_messages.html.twig')}}
+
 		<div class="flex flex-col">
 			<p class="my-4">
 				<a href="{{ path('app_message_received') }}">Boîte de réception :
