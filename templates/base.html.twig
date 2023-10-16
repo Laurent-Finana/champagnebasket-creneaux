@@ -88,10 +88,9 @@
 				<div class="flex flex-col bg-gray-100 h-full">
 					{% if is_granted('ROLE_COACH') %}
 
-						<a href="{{ path('app_slot_new')}}" class="text-sm text-center m-4 px-2 py-2 border rounded-lg bg-green-500 text-black border-white hover:border-transparent hover:text-cyan-600 hover:bg-orange-200">Nouveau créneau</a>
-
-
-						<a href="{{ path('app_slot_index')}}" class="text-sm text-center mx-4 px-2 py-2 border rounded-lg bg-amber-200 text-black border-white hover:border-transparent hover:text-cyan-600 hover:bg-orange-200">Modifier un créneau</a>
+						<a href="{{ path('app_slot_new')}}" class="text-sm text-center m-4 p-2 border rounded-lg bg-green-500 text-black border-white hover:border-transparent hover:text-cyan-600 hover:bg-orange-200">Nouveau créneau</a>
+						<a href="{{ path('app_slot_index')}}" class="text-sm text-center mx-4 p-2 border rounded-lg bg-amber-200 text-black border-white hover:border-transparent hover:text-cyan-600 hover:bg-orange-200">Modifier un créneau</a>
+						<a href="{{ path('app_slot_index')}}" class="text-sm text-center m-4 p-2 border rounded-lg bg-sky-300 text-black border-white hover:border-transparent hover:text-cyan-600 hover:bg-orange-200">Liste des créneaux</a>
 
 					{% elseif is_granted('ROLE_PLAYER') %}
 						<a href="{{ path('app_message_send')}}" class="text-sm text-center m-4 px-2 py-2 border rounded-lg bg-green-500 text-black border-white hover:border-transparent hover:text-cyan-600 hover:bg-orange-200">Demander un créneau</a>

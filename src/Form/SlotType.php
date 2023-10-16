@@ -10,6 +10,7 @@ use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints\NotBlank;
 
 class SlotType extends AbstractType
 {
@@ -48,6 +49,11 @@ class SlotType extends AbstractType
                     'Petite salle' => 2,
                     'Musculation' => 3,
                 ],
+                'constraints' => [
+                    new NotBlank([
+                        'message' => 'Veuillez sélectionner une salle',
+                    ]),
+                ],
                 'multiple' => false,
                 'expanded' => true,
             ]);
@@ -57,6 +63,9 @@ class SlotType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => Slot::class,
+            'attr' => [
+                'novalidate' => 'novalidate',
+            ],
         ]);
     }
 }

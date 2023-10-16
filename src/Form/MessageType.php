@@ -28,7 +28,7 @@ class MessageType extends AbstractType
                 "label" => "Message",
                 'constraints' => [
                     new NotBlank([
-                        'message' => 'Merci d\'ajouter votre message',
+                        'message' => 'Merci d\'ajouter votre message.',
                     ]),
                 ]
             ])
@@ -55,6 +55,9 @@ class MessageType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => Message::class,
+            'attr' => [
+                'novalidate' => 'novalidate',
+            ],
         ]);
     }
 }
