@@ -6,21 +6,22 @@
 
 {% block body %}
 
-	<section class="">
-		<div class="">
-			<div class="">
-				<h1>Messagerie</h1>
-				<h2>{{ message.title }}</h2>
-				<p>Message de :
-					{{ message.sender.firstname }}
-					{{ message.sender.lastname }}</p>
-				<p>Le :
-					{{ message.createdAt|date }}</p>
-				<div>{{ message.content }}</div>
+	<div class="my-10  mx-auto">
+		<h1 class="mb-8 text-2xl text-center">Message reçu</h1>
+		<h2 class="mb-8 text-xl text-center">{{ message.title }}</h2>
+		<section class="flex justify-center space-x-4">
+			<p>De :
+				{{ message.sender.firstname }}
+				{{ message.sender.lastname }}</p>
+			<p>Le :
+				{{ message.createdAt|date("d/m/Y", "Europe/Paris") }}</p>
 
-				<a href="{{ path('app_message_received')}}" class="text-sm text-center mx-4 px-2 py-2 border rounded-lg bg-amber-200 text-black border-white hover:border-transparent hover:text-cyan-600 hover:bg-orange-200">Boîte de réception</a>
-			</div>
+
 		</div>
-	</section>
+		<div class="text-center w-1/2 mx-auto">{{ message.content|nl2br }}</div>
 
+		<a href="#" class="text-sm text-center block mx-auto mt-8 w-64 p-2 border rounded-lg bg-sky-200 text-black border-white hover:border-transparent hover:text-cyan-600 hover:bg-orange-200">Répondre</a>
+		<a href="{{ path('app_message_received')}}" class="text-sm text-center block mx-auto mt-4 w-64 p-2 border rounded-lg bg-amber-200 text-black border-white hover:border-transparent hover:text-cyan-600 hover:bg-orange-200">Boîte de réception</a>
+
+	</section>
 {% endblock %}

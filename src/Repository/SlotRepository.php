@@ -29,10 +29,11 @@ class SlotRepository extends ServiceEntityRepository
      */
     public function findByRoom($room)
     {
-        $query = $this->createQueryBuilder('s')
-            ->where('s.room = :val')
-            ->setParameter('val', $room);
-        return $query->getQuery()->getResult();
+        return $this->createQueryBuilder('s')
+            ->andwhere('s.room = :val')
+            ->setParameter('val', $room)
+            ->getQuery()
+            ->getResult();
     }
 
 
