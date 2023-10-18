@@ -86,8 +86,8 @@
 			</nav>
 
 		{% endblock %}
-		<div class="flex flex-row h-screen">
-			<div class="flex flex-col bg-gray-100 h-full">
+		<div class="flex flex-col mb-0 md:flex md:flex-row">
+			<div class="order-last flex flex-col items-center bg-gray-100 md:order-first">
 				{% if is_granted('ROLE_COACH') %}
 
 					<a href="{{ path('app_slot_new')}}" class="text-sm text-center m-4 p-2 border rounded-lg bg-green-500 text-black border-white hover:border-transparent hover:text-cyan-600 hover:bg-orange-200">Nouveau créneau</a>
