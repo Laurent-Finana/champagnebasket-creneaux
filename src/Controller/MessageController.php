@@ -52,7 +52,7 @@ class MessageController extends AbstractController
     public function received(MessageRepository $messageRepository): Response
     {
         $messages = $messageRepository->findAllOrderedByDate();
-        dump($messages);
+
 
         return $this->render('message/received.html.twig', [
             "messages" => $messages

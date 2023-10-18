@@ -15,32 +15,54 @@
 		{% endblock %}
 		<script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js" integrity="sha256-8EcfIJRWyvnu/U0OsfCk05x1JGVmeC2a7sJQHrbWYSA=" crossorigin="anonymous" defer></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.1/flowbite.min.js" defer></script>
+		<script src="{{ asset('assets/js/script.js') }}" defer></script>
 		{% block javascripts %}
 			{{ encore_entry_script_tags('app') }}
 		{% endblock %}
 	</head>
 	<body class="bg-slate-200">
 		{% block nav %}
-			<nav class="flex flex-col items-center justify_center lg:flex-row lg:justify-between flex-wrap bg-navbar p-6">
-				<div class="flex justify-center items-center flex-shrink-0 text-white mr-6">
-					<a href="{{ path('app_main')}}">
-						<img src="{{ asset('output-onlinepngtools.png') }}" alt="Logo training-slots" class="mr-2 inline-block">
-						<span class="font-semibold text-xl">ResaBasketTys</span>
-					</a>
+			<nav class="relative px-4 py-4 flex justify-between items-center bg-white">
+				<a class="text-3xl font-bold" href="{{ path('app_main')}}">
+					<img src="{{ asset('output-onlinepngtools.png') }}" alt="Logo training-slots" class="inline-block">
+					<span class="font-semibold text-lg">ResaBasketTys</span>
+				</a>
+				<div class="order-last lg:hidden">
+					<button class="navbar-burger flex items-center text-blue-600 p-3">
+						<svg class="block h-4 w-4 fill-current" viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+							<title>Mobile menu</title>
+							<path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"></path>
+						</svg>
+					</button>
 				</div>
-				<div class="w-full block grow lg:flex lg:items-center lg:w-auto">
-					<div class="pl-4 lg:flex lg:justify-center lg:items-center text-lg text-center lg:grow">
-						<a href="{{ path('app_calendar_grande_salle')}}" class="block mt-4  lg:mt-0 text-orange-200 hover:text-white mr-10 {% if (app.request.attributes.get('_route') == 'app_calendar_grande_salle') %} text-white underline{% endif %}">
-							Grande salle
-						</a>
-						<a href="{{ path('app_calendar_petite_salle')}}" class="block mt-4  lg:mt-0 text-orange-200 hover:text-white mr-10 {% if (app.request.attributes.get('_route') == 'app_calendar_petite_salle') %}text-white underline{% endif %}">
-							Petite salle
-						</a>
-						<a href="{{ path('app_calendar_musculation')}}" class="block mt-4 l lg:mt-0 text-orange-200 hover:text-white mr-10 {% if (app.request.attributes.get('_route') == 'app_calendar_musculation') %}text-white underline{% endif %}">
-							Musculation
-						</a>
-						{% if is_granted('ROLE_PLAYER') %}
-							<a href="{{ path('app_message_received')}}" class="block mt-4  lg:mt-0 text-orange-200 hover:text-white mr-10 {% if (app.request.attributes.get('_route') == 'app_message_received') %}text-white underline{% endif %}">
+				<ul class="hidden absolute top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2 lg:flex lg:mx-auto lg:items-center lg:w-auto lg:space-x-6">
+					<li>
+						<a class="text-sm text-gray-400 hover:text-gray-500 {% if (app.request.attributes.get('_route') == 'app_calendar_grande_salle') %}text-blue-500 font-bold underline{% endif %}" href="{{ path('app_calendar_grande_salle')}}">Grande salle</a>
+					</li>
+					<li class="text-gray-300">
+						<svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" class="w-4 h-4 current-fill" viewbox="0 0 24 24">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v0m0 7v0m0 7v0m0-13a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z"/>
+						</svg>
+					</li>
+					<li>
+						<a class="text-sm text-gray-400 hover:text-gray-500 {% if (app.request.attributes.get('_route') == 'app_calendar_petite_salle') %} text-blue-500 font-bold underline{% endif %}" href="{{ path('app_calendar_petite_salle')}}">Petite salle</a>
+					</li>
+					<li class="text-gray-300">
+						<svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" class="w-4 h-4 current-fill" viewbox="0 0 24 24">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v0m0 7v0m0 7v0m0-13a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z"/>
+						</svg>
+					</li>
+					<li>
+						<a class="text-sm text-gray-400 hover:text-gray-500 {% if (app.request.attributes.get('_route') == 'app_calendar_musculation') %} text-blue-500 font-bold underline{% endif %}" href="{{ path('app_calendar_musculation')}}">Musculation</a>
+					</li>
+					<li class="text-gray-300">
+						<svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" class="w-4 h-4 current-fill" viewbox="0 0 24 24">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v0m0 7v0m0 7v0m0-13a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z"/>
+						</svg>
+					</li>
+					{% if is_granted('ROLE_PLAYER') %}
+						<li>
+							<a class="text-sm text-gray-400 hover:text-gray-500 {% if (app.request.attributes.get('_route') == 'app_message_received') %} text-blue-500 font-bold underline{% endif %}" href="{{ path('app_message_received')}}">
 								Messagerie
 								<div class="hidden">
 									{% set notRead = 0 %}
@@ -53,39 +75,87 @@
 								</div>
 								<span>({{ notRead }})</span>
 							</a>
-						{% endif %}
+						</li>
+						<li class="text-gray-300">
+							<svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" class="w-4 h-4 current-fill" viewbox="0 0 24 24">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v0m0 7v0m0 7v0m0-13a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z"/>
+							</svg>
+						</li>
+					{% endif %}
+					{% if is_granted('ROLE_ADMIN') %}
+						<li>
+							<a class="text-sm text-gray-400 hover:text-gray-500" href="{{ path('admin')}}">Administration</a>
+						</li>
+					{% endif %}
+				</ul>
 
-						{% if is_granted('ROLE_ADMIN') %}
-							<a href="{{ path('admin')}}" class="inline-block mt-4 lg:mt-0 text-sm px-4 py-2 leading-none border rounded-lg text-red-300 border-white hover:border-transparent hover:text-cyan-600 hover:bg-red-300">
-								Zone Administrateur
-							</a>
-						{% endif %}
-
-
-					</div>
-					<div class="text-center">
-
-						{% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
-							<p class="my-4 inline-block text-white">Bonjour
-								<span class="ml-2 mt-4 lg:inline-block lg:mt-0 text-orange-200 text-xl mr-10">
+				<ul class="text-center">
+					{% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+						<li>
+							<p class="lg:inline-block lg:ml-auto lg:mr-3 py-2 px-6 text-sm text-gray-900">Bonjour
+								<span class="font-bold">
 									{{ app.user.firstname }}
 									{{ app.user.lastname }}
 								</span>
 							</p>
-						{% endif %}
+						</li>
+						<li class="lg:inline-block">
+							<a class="hidden lg:inline-block lg:ml-auto lg:mr-3 py-2 px-6 bg-gray-50 hover:bg-gray-100 text-sm text-gray-900 font-bold  rounded-xl transition duration-200" href="{{ path('app_logout')}}">Déconnexion</a>
+						</li>
+					{% else %}
+						<li>
+							<a class="hidden lg:inline-block lg:ml-auto lg:mr-3 py-2 px-6 bg-gray-50 hover:bg-gray-100 text-sm text-gray-900 font-bold  rounded-xl transition duration-200" href="{{ path('app_login')}}">Connexion</a>
+							<a href="{{ path('app_register') }}" class="hidden lg:block text-xs mt-2">Pas encore inscrit ? Créer un compte</a>
+						</li>
 
-						{% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
-							<a href="{{ path('app_logout')}}" class="block w-32 mx-auto lg:inline-block text-sm px-4 py-2 border rounded-lg text-white border-white hover:border-transparent hover:text-cyan-600 hover:bg-orange-200  lg:mt-0">Déconnexion</a>
-						{% else %}
-							<a href="{{ path('app_login')}}" class="lg:inline-block text-sm px-4 py-2 border rounded-lg text-white border-white hover:border-transparent hover:text-cyan-600 hover:bg-orange-200 lg:mt-0">Connexion</a>
-							<p class="mt-2">
-								<a href="{{ path('app_register') }}" class="text-sm">Pas encore inscrit ? Créer un compte</a>
-							</p>
-						{% endif %}
+					{% endif %}
+				</ul>
 
-					</div>
-				</div>
 			</nav>
+			<div class="navbar-menu relative z-50 hidden">
+				<div class="navbar-backdrop fixed inset-0 bg-gray-800 opacity-25"></div>
+				<nav class="fixed top-0 left-0 bottom-0 flex flex-col w-5/6 max-w-sm py-6 px-6 bg-white border-r overflow-y-auto">
+					<div class="flex items-center mb-8">
+						<a class="mr-auto text-3xl font-bold leading-none" href="#">
+							<img src="{{ asset('output-onlinepngtools.png') }}" alt="Logo training-slots" class="inline-block">
+							<span class="font-semibold text-lg">ResaBasketTys</span>
+						</a>
+						<button class="navbar-close">
+							<svg class="h-6 w-6 text-gray-400 cursor-pointer hover:text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewbox="0 0 24 24" stroke="currentColor">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+							</svg>
+						</button>
+					</div>
+					<div>
+						<ul>
+							<li class="mb-1">
+								<a class="block p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded" href="#">Home</a>
+							</li>
+							<li class="mb-1">
+								<a class="block p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded" href="#">About Us</a>
+							</li>
+							<li class="mb-1">
+								<a class="block p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded" href="#">Services</a>
+							</li>
+							<li class="mb-1">
+								<a class="block p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded" href="#">Pricing</a>
+							</li>
+							<li class="mb-1">
+								<a class="block p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded" href="#">Contact</a>
+							</li>
+						</ul>
+					</div>
+					<div class="mt-auto">
+						<div class="pt-6">
+							<a class="block px-4 py-3 mb-3 leading-loose text-xs text-center font-semibold leading-none bg-gray-50 hover:bg-gray-100 rounded-xl" href="#">Sign in</a>
+							<a class="block px-4 py-3 mb-2 leading-loose text-xs text-center text-white font-semibold bg-blue-600 hover:bg-blue-700  rounded-xl" href="#">Sign Up</a>
+						</div>
+						<p class="my-4 text-xs text-center text-gray-400">
+							<span>Copyright © 2021</span>
+						</p>
+					</div>
+				</nav>
+			</div>
 
 		{% endblock %}
 		<div class="flex flex-col mb-0 md:flex md:flex-row">
@@ -108,3 +178,4 @@
 			</div>
 		</body>
 	</html>
+</body></html></body></html>
