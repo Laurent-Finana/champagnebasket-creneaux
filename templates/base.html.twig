@@ -13,32 +13,34 @@
 		{% block stylesheets %}
 			{{ encore_entry_link_tags('app') }}
 		{% endblock %}
+		<script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js" integrity="sha256-8EcfIJRWyvnu/U0OsfCk05x1JGVmeC2a7sJQHrbWYSA=" crossorigin="anonymous" defer></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.1/flowbite.min.js" defer></script>
 		{% block javascripts %}
 			{{ encore_entry_script_tags('app') }}
 		{% endblock %}
 	</head>
 	<body class="bg-slate-200">
 		{% block nav %}
-			<nav class="flex items-center justify-between flex-wrap bg-navbar p-6">
-				<div class="flex items-center flex-shrink-0 text-white mr-6">
+			<nav class="flex flex-col items-center justify_center lg:flex-row lg:justify-between flex-wrap bg-navbar p-6">
+				<div class="flex justify-center items-center flex-shrink-0 text-white mr-6">
 					<a href="{{ path('app_main')}}">
-						<img src="{{ asset('output-onlinepngtools.png') }}" alt="Logo training-slots" class="mr-2 lg:inline-block">
+						<img src="{{ asset('output-onlinepngtools.png') }}" alt="Logo training-slots" class="mr-2 inline-block">
 						<span class="font-semibold text-xl">ResaBasketTys</span>
 					</a>
 				</div>
-				<div class="w-full block flex-grow lg:flex lg:items-center lg:w-auto">
-					<div class="text-lg text-center lg:flex-grow">
-						<a href="{{ path('app_calendar_grande_salle')}}" class="block mt-4 lg:inline-block lg:mt-0 text-orange-200 hover:text-white mr-10 {% if (app.request.attributes.get('_route') == 'app_calendar_grande_salle') %} text-white underline{% endif %}">
+				<div class="w-full block grow lg:flex lg:items-center lg:w-auto">
+					<div class="pl-4 lg:flex lg:justify-center lg:items-center text-lg text-center lg:grow">
+						<a href="{{ path('app_calendar_grande_salle')}}" class="block mt-4  lg:mt-0 text-orange-200 hover:text-white mr-10 {% if (app.request.attributes.get('_route') == 'app_calendar_grande_salle') %} text-white underline{% endif %}">
 							Grande salle
 						</a>
-						<a href="{{ path('app_calendar_petite_salle')}}" class="block mt-4 lg:inline-block lg:mt-0 text-orange-200 hover:text-white mr-10 {% if (app.request.attributes.get('_route') == 'app_calendar_petite_salle') %}text-white underline{% endif %}">
+						<a href="{{ path('app_calendar_petite_salle')}}" class="block mt-4  lg:mt-0 text-orange-200 hover:text-white mr-10 {% if (app.request.attributes.get('_route') == 'app_calendar_petite_salle') %}text-white underline{% endif %}">
 							Petite salle
 						</a>
-						<a href="{{ path('app_calendar_musculation')}}" class="block mt-4 lg:inline-block lg:mt-0 text-orange-200 hover:text-white mr-10 {% if (app.request.attributes.get('_route') == 'app_calendar_musculation') %}text-white underline{% endif %}">
+						<a href="{{ path('app_calendar_musculation')}}" class="block mt-4 l lg:mt-0 text-orange-200 hover:text-white mr-10 {% if (app.request.attributes.get('_route') == 'app_calendar_musculation') %}text-white underline{% endif %}">
 							Musculation
 						</a>
 						{% if is_granted('ROLE_PLAYER') %}
-							<a href="{{ path('app_message_received')}}" class="block mt-4 lg:inline-block lg:mt-0 text-orange-200 hover:text-white mr-10 {% if (app.request.attributes.get('_route') == 'app_message') %}text-white underline{% endif %}">
+							<a href="{{ path('app_message_received')}}" class="block mt-4  lg:mt-0 text-orange-200 hover:text-white mr-10 {% if (app.request.attributes.get('_route') == 'app_message_received') %}text-white underline{% endif %}">
 								Messagerie
 								<div class="hidden">
 									{% set notRead = 0 %}
@@ -54,18 +56,18 @@
 						{% endif %}
 
 						{% if is_granted('ROLE_ADMIN') %}
-							<a href="{{ path('admin')}}" class="inline-block text-sm px-4 py-2 leading-none border rounded-lg text-red-300 border-white hover:border-transparent hover:text-cyan-600 hover:bg-red-300 mt-4 lg:mt-0">
+							<a href="{{ path('admin')}}" class="inline-block mt-4 lg:mt-0 text-sm px-4 py-2 leading-none border rounded-lg text-red-300 border-white hover:border-transparent hover:text-cyan-600 hover:bg-red-300">
 								Zone Administrateur
 							</a>
 						{% endif %}
 
 
 					</div>
-					<div>
+					<div class="text-center">
 
 						{% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
-							<p class="inline-block text-white">Bonjour
-								<span class="block ml-2 mt-4 lg:inline-block lg:mt-0 text-orange-200 text-xl mr-10">
+							<p class="my-4 inline-block text-white">Bonjour
+								<span class="ml-2 mt-4 lg:inline-block lg:mt-0 text-orange-200 text-xl mr-10">
 									{{ app.user.firstname }}
 									{{ app.user.lastname }}
 								</span>
@@ -73,9 +75,9 @@
 						{% endif %}
 
 						{% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
-							<a href="{{ path('app_logout')}}" class="inline-block text-sm px-4 py-2 leading-none border rounded-lg text-white border-white hover:border-transparent hover:text-cyan-600 hover:bg-orange-200 mt-4 lg:mt-0">Déconnexion</a>
+							<a href="{{ path('app_logout')}}" class="block w-32 mx-auto lg:inline-block text-sm px-4 py-2 border rounded-lg text-white border-white hover:border-transparent hover:text-cyan-600 hover:bg-orange-200  lg:mt-0">Déconnexion</a>
 						{% else %}
-							<a href="{{ path('app_login')}}" class="ml-12 inline-block text-sm px-4 py-2 leading-none border rounded-lg text-white border-white hover:border-transparent hover:text-cyan-600 hover:bg-orange-200 mt-4 lg:mt-0">Connexion</a>
+							<a href="{{ path('app_login')}}" class="lg:inline-block text-sm px-4 py-2 border rounded-lg text-white border-white hover:border-transparent hover:text-cyan-600 hover:bg-orange-200 lg:mt-0">Connexion</a>
 							<p class="mt-2">
 								<a href="{{ path('app_register') }}" class="text-sm">Pas encore inscrit ? Créer un compte</a>
 							</p>
@@ -100,11 +102,9 @@
 			</div>
 
 
-			<div class="container mx-auto"> {% block body %}{% endblock %}
+			<div class="container mx-auto mb-4"> {% block body %}{% endblock %}
 				</div>
 
 			</div>
-			<script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js" integrity="sha256-8EcfIJRWyvnu/U0OsfCk05x1JGVmeC2a7sJQHrbWYSA=" crossorigin="anonymous"></script>
-			<script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.1/flowbite.min.js"></script>
 		</body>
 	</html>
