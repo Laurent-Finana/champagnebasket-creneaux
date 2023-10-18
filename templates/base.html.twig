@@ -37,7 +37,7 @@
 				</div>
 				<ul class="hidden absolute top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2 lg:flex lg:mx-auto lg:items-center lg:w-auto lg:space-x-6">
 					<li>
-						<a class="text-sm text-gray-400 hover:text-gray-500 {% if (app.request.attributes.get('_route') == 'app_calendar_grande_salle') %}text-blue-500 font-bold underline{% endif %}" href="{{ path('app_calendar_grande_salle')}}">Grande salle</a>
+						<a class="text-sm text-gray-400 hover:text-gray-500 {% if (app.request.attributes.get('_route') == 'app_calendar_grande_salle') %} text-amber-700 font-bold underline{% endif %}" href="{{ path('app_calendar_grande_salle')}}">Grande salle</a>
 					</li>
 					<li class="text-gray-300">
 						<svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" class="w-4 h-4 current-fill" viewbox="0 0 24 24">
@@ -45,7 +45,7 @@
 						</svg>
 					</li>
 					<li>
-						<a class="text-sm text-gray-400 hover:text-gray-500 {% if (app.request.attributes.get('_route') == 'app_calendar_petite_salle') %} text-blue-500 font-bold underline{% endif %}" href="{{ path('app_calendar_petite_salle')}}">Petite salle</a>
+						<a class="text-sm text-gray-400 hover:text-gray-500 {% if (app.request.attributes.get('_route') == 'app_calendar_petite_salle') %} text-amber-700 font-bold underline{% endif %}" href="{{ path('app_calendar_petite_salle')}}">Petite salle</a>
 					</li>
 					<li class="text-gray-300">
 						<svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" class="w-4 h-4 current-fill" viewbox="0 0 24 24">
@@ -53,16 +53,17 @@
 						</svg>
 					</li>
 					<li>
-						<a class="text-sm text-gray-400 hover:text-gray-500 {% if (app.request.attributes.get('_route') == 'app_calendar_musculation') %} text-blue-500 font-bold underline{% endif %}" href="{{ path('app_calendar_musculation')}}">Musculation</a>
+						<a class="text-sm text-gray-400 hover:text-gray-500 {% if (app.request.attributes.get('_route') == 'app_calendar_musculation') %} text-amber-700 font-bold underline{% endif %}" href="{{ path('app_calendar_musculation')}}">Musculation</a>
 					</li>
-					<li class="text-gray-300">
-						<svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" class="w-4 h-4 current-fill" viewbox="0 0 24 24">
-							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v0m0 7v0m0 7v0m0-13a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z"/>
-						</svg>
-					</li>
+
 					{% if is_granted('ROLE_PLAYER') %}
+						<li class="text-gray-300">
+							<svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" class="w-4 h-4 current-fill" viewbox="0 0 24 24">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v0m0 7v0m0 7v0m0-13a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z"/>
+							</svg>
+						</li>
 						<li>
-							<a class="text-sm text-gray-400 hover:text-gray-500 {% if (app.request.attributes.get('_route') == 'app_message_received') %} text-blue-500 font-bold underline{% endif %}" href="{{ path('app_message_received')}}">
+							<a class="text-sm text-gray-400 hover:text-gray-500 {% if (app.request.attributes.get('_route') == 'app_message_received') %} text-amber-700 font-bold underline{% endif %}" href="{{ path('app_message_received')}}">
 								Messagerie
 								<div class="hidden">
 									{% set notRead = 0 %}
@@ -129,53 +130,78 @@
 					<div>
 						<ul>
 							<li class="mb-1">
-								<a class="block p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded" href="#">Home</a>
+								<a class="block p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded" href="{{ path('app_calendar_grande_salle')}}">Grande salle</a>
 							</li>
 							<li class="mb-1">
-								<a class="block p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded" href="#">About Us</a>
+								<a class="block p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded" href="{{ path('app_calendar_petite_salle')}}">Petite salle</a>
 							</li>
 							<li class="mb-1">
-								<a class="block p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded" href="#">Services</a>
+								<a class="block p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded" href="{{ path('app_calendar_musculation')}}">Musculation</a>
 							</li>
-							<li class="mb-1">
-								<a class="block p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded" href="#">Pricing</a>
-							</li>
-							<li class="mb-1">
-								<a class="block p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded" href="#">Contact</a>
-							</li>
+
+							{% if is_granted('ROLE_PLAYER') %}
+								<li class="mb-1">
+									<a class="block p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded" href="{{ path('app_message_received')}}">
+										Messagerie
+										<div class="hidden">
+											{% set notRead = 0 %}
+											{% for message in app.user.received %}
+												{% if message.isRead != true %}{
+													{% set notRead = notRead + 1 %}
+													}
+												{% endif %}
+											{% endfor %}
+										</div>
+										<span>({{ notRead }})</span>
+									</a>
+								</li>
+							{% endif %}
+
+							{% if is_granted('ROLE_ADMIN') %}
+								<li class="mb-1">
+									<a class="block p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded" href="{{ path('admin')}}">Administration</a>
+								</li>
+							{% endif %}
+
 						</ul>
 					</div>
-					<div class="mt-auto">
+					<div class="my-auto">
 						<div class="pt-6">
-							<a class="block px-4 py-3 mb-3 leading-loose text-xs text-center font-semibold leading-none bg-gray-50 hover:bg-gray-100 rounded-xl" href="#">Sign in</a>
-							<a class="block px-4 py-3 mb-2 leading-loose text-xs text-center text-white font-semibold bg-blue-600 hover:bg-blue-700  rounded-xl" href="#">Sign Up</a>
+							{% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+								<a class="block px-4 py-3 mb-3 leading-loose text-xs text-center font-semibold leading-none bg-gray-50 hover:bg-gray-100 rounded-xl" href="{{ path('app_logout')}}">Déconnexion</a>
+							{% else %}
+								<a class="block px-4 py-3 mb-2 leading-loose text-xs text-center text-white font-semibold bg-blue-600 hover:bg-blue-700  rounded-xl" href="{{ path('app_login')}}">Connexion</a>
+								<p class="my-4 text-xs text-center text-gray-400">
+									<span>Pas encore inscrit ? Créer un compte</span>
+								</p>
+							{% endif %}
 						</div>
-						<p class="my-4 text-xs text-center text-gray-400">
-							<span>Copyright © 2021</span>
-						</p>
+
 					</div>
 				</nav>
 			</div>
 
 		{% endblock %}
+
 		<div class="flex flex-col mb-0 md:flex md:flex-row">
-			<div class="order-last flex flex-col items-center bg-gray-100 md:order-first">
-				{% if is_granted('ROLE_COACH') %}
+			{% block aside %}
+				<div class="flex flex-col order-last items-center bg-gray-100 md:order-first">
+					{% if is_granted('ROLE_COACH') %}
 
-					<a href="{{ path('app_slot_new')}}" class="text-sm text-center m-4 p-2 border rounded-lg bg-green-500 text-black border-white hover:border-transparent hover:text-cyan-600 hover:bg-orange-200">Nouveau créneau</a>
-					<a href="{{ path('app_slot_index')}}" class="text-sm text-center mx-4 p-2 border rounded-lg bg-amber-200 text-black border-white hover:border-transparent hover:text-cyan-600 hover:bg-orange-200">Modifier un créneau</a>
-					<a href="{{ path('app_slot_index')}}" class="text-sm text-center m-4 p-2 border rounded-lg bg-sky-300 text-black border-white hover:border-transparent hover:text-cyan-600 hover:bg-orange-200">Liste des créneaux</a>
+						<a href="{{ path('app_slot_new')}}" class="text-sm text-center m-4 p-2 border rounded-lg bg-green-500 text-black border-white hover:border-transparent hover:text-cyan-600 hover:bg-orange-200">Nouveau créneau</a>
+						<a href="{{ path('app_slot_index')}}" class="text-sm text-center mx-4 p-2 border rounded-lg bg-amber-200 text-black border-white hover:border-transparent hover:text-cyan-600 hover:bg-orange-200">Modifier un créneau</a>
+						<a href="{{ path('app_slot_index')}}" class="text-sm text-center m-4 p-2 border rounded-lg bg-sky-300 text-black border-white hover:border-transparent hover:text-cyan-600 hover:bg-orange-200">Liste des créneaux</a>
 
-				{% elseif is_granted('ROLE_PLAYER') %}
-					<a href="{{ path('app_message_send')}}" class="text-sm text-center m-4 px-2 py-2 border rounded-lg bg-green-500 text-black border-white hover:border-transparent hover:text-cyan-600 hover:bg-orange-200">Demander un créneau</a>
-				{% endif %}
-			</div>
-
+					{% elseif is_granted('ROLE_PLAYER') %}
+						<a href="{{ path('app_message_send')}}" class="text-sm text-center m-4 px-2 py-2 border rounded-lg bg-green-500 text-black border-white hover:border-transparent hover:text-cyan-600 hover:bg-orange-200">Demander un créneau</a>
+					{% endif %}
+				</div>
+			{% endblock %}
 
 			<div class="container mx-auto mb-4"> {% block body %}{% endblock %}
 				</div>
-
 			</div>
+
+
 		</body>
 	</html>
-</body></html></body></html>

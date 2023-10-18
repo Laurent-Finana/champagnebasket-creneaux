@@ -39,7 +39,7 @@
 						{% elseif slot.backgroundColor == "#EE9209" %}
 							<td class="px-6 py-4 text-center">Cdf féminines</td>
 						{% endif %}
-						<td class="px-6 py-4 text-center">
+						<td class="flex flex-row justify-center px-6 py-4 text-center">
 							<a href="{{ path('app_slot_show', {'id': slot.id}) }}" class="text-sm text-center px-2 py-2 border rounded-lg bg-sky-500 text-black border-white hover:border-transparent hover:text-cyan-600 hover:bg-orange-200">Voir</a>
 							<a href="{{ path('app_slot_edit', {'id': slot.id}) }}" class="text-sm text-center px-2 py-2 border rounded-lg bg-amber-200 text-black border-white hover:border-transparent hover:text-cyan-600 hover:bg-orange-200">Modifier</a>
 						</td>
@@ -53,4 +53,4 @@
 			<td colspan="9">Aucun enregistrement trouvé</td>
 		</tr>
 	{% endfor %}
-</tbody></table><a href="{{ path('app_slot_new') }}" class="text-sm text-center p-2 border rounded-lg bg-green-500 text-black border-white hover:border-transparent hover:text-cyan-600 hover:bg-orange-200">Ajouter un créneau</a></div>{% endblock %}
+</tbody></table><a href="{{ path('app_slot_new') }}" class="hidden lg:flex text-sm text-center p-2 border rounded-lg bg-green-500 text-black border-white hover:border-transparent hover:text-cyan-600 hover:bg-orange-200">Ajouter un créneau</a></div>{% endblock %}
