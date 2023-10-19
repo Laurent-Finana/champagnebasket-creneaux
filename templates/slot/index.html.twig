@@ -27,7 +27,7 @@
 						<td class="px-6 py-4 text-center">{{ slot.title }}</td>
 						<td class="px-6 py-4 text-center">{{ slot.start ? slot.start|date('d-m-Y H:i') : '' }}</td>
 						<td class="px-6 py-4 text-center">{{ slot.end ? slot.end|date('d-m-Y H:i') : '' }}</td>
-						<td class="px-6 p-4 text-center">{{ slot.description }}</td>
+						<td class="px-6 p-4 text-center"><textarea class="border border-gray-300 rounded-lg">{{ slot.description }}</textarea></td>
 						{% if slot.backgroundColor == "#ffff00" %}
 							<td class="px-6 py-4 text-center">Pro B</td>
 						{% elseif slot.backgroundColor == "#fc87f9" %}
