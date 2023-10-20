@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-	<div id="calendrier" class="h-screen"></div>
+	<div id="calendrier" class="h-screen w-11/12 m-auto"></div>
 {% endblock %}
 
 
@@ -92,11 +92,8 @@ list: 'Liste',
 today: 'Aujourd\'hui'
 },
 allDaySlot: false,
-events: {{ data|raw }},
+events: {{ data|raw }}
 
-eventClick: function (info) {
-alert('Description: ' + info.event.extendedProps.description);
-}
 });
 calendar.render();
 }

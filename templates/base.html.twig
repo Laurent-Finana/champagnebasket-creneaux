@@ -7,7 +7,7 @@
 			{% block title %}Welcome!
 			{% endblock %}
 		</title>
-		<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
+		<link rel="icon" href="{{ asset('favicon.png') }}" type="image/png">
 		<link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.1/flowbite.min.css" rel="stylesheet"/>
 		<link rel="stylesheet" href="{{ asset('assets/css/trainingSlots.css') }}">
 		{% block stylesheets %}
@@ -20,11 +20,11 @@
 			{{ encore_entry_script_tags('app') }}
 		{% endblock %}
 	</head>
-	<body class="bg-slate-200 h-screen">
+	<body class="bg-white h-screen">
 		{% block nav %}
-			<nav class="relative px-4 py-4 flex justify-between items-center bg-white">
+			<nav class="relative px-4 py-4 flex justify-between items-center bg-slate-100">
 				<a class="text-3xl font-bold" href="{{ path('app_main')}}">
-					<img src="{{ asset('output-onlinepngtools.png') }}" alt="Logo training-slots" class="inline-block">
+					<img src="{{ asset('logo-ballon.png') }}" width="64" alt="logo ballon retour accueil" class="inline-block">
 					<span class="font-semibold text-lg">ResaBasketTys</span>
 				</a>
 				<div class="order-last lg:hidden">
@@ -118,7 +118,7 @@
 				<nav class="fixed top-0 left-0 bottom-0 flex flex-col w-5/6 max-w-sm py-6 px-6 bg-white border-r overflow-y-auto">
 					<div class="flex items-center mb-8">
 						<a class="mr-auto text-3xl font-bold leading-none" href="#">
-							<img src="{{ asset('output-onlinepngtools.png') }}" alt="Logo training-slots" class="inline-block">
+							<img src="{{ asset('logo-ballon.png') }}" width="32" alt="Logo training-slots" class="inline-block">
 							<span class="font-semibold text-lg">ResaBasketTys</span>
 						</a>
 						<button class="navbar-close">
@@ -130,18 +130,18 @@
 					<div>
 						<ul>
 							<li class="mb-1">
-								<a class="block p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded" href="{{ path('app_calendar_grande_salle')}}">Grande salle</a>
+								<a class="block p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded {% if (app.request.attributes.get('_route') == 'app_calendar_grande_salle') %} text-amber-700 font-bold underline{% endif %}" href="{{ path('app_calendar_grande_salle')}}">Grande salle</a>
 							</li>
 							<li class="mb-1">
-								<a class="block p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded" href="{{ path('app_calendar_petite_salle')}}">Petite salle</a>
+								<a class="block p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded {% if (app.request.attributes.get('_route') == 'app_calendar_petite_salle') %} text-amber-700 font-bold underline{% endif %}" href="{{ path('app_calendar_petite_salle')}}">Petite salle</a>
 							</li>
 							<li class="mb-1">
-								<a class="block p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded" href="{{ path('app_calendar_musculation')}}">Musculation</a>
+								<a class="block p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded {% if (app.request.attributes.get('_route') == 'app_calendar_musculation') %} text-amber-700 font-bold underline{% endif %}" href="{{ path('app_calendar_musculation')}}">Musculation</a>
 							</li>
 
 							{% if is_granted('ROLE_PLAYER') %}
 								<li class="mb-1">
-									<a class="block p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded" href="{{ path('app_message_received')}}">
+									<a class="block p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded {% if (app.request.attributes.get('_route') == 'app_message_received') %} text-amber-700 font-bold underline{% endif %}" href="{{ path('app_message_received')}}">
 										Messagerie
 										<div class="hidden">
 											{% set notRead = 0 %}
@@ -183,9 +183,9 @@
 
 		{% endblock %}
 
-		<div class="flex flex-col md:flex md:flex-row">
+		<div class="flex flex-col lg:flex lg:flex-row">
 			{% block aside %}
-				<div class="flex flex-col order-last items-center bg-gray-100 md:h-screen md:order-first">
+				<div class="flex flex-col order-last items-center bg-gray-200 lg:h-screen lg:order-first">
 					{% if is_granted('ROLE_COACH') %}
 
 						<a href="{{ path('app_slot_new')}}" class="text-sm text-center m-4 p-2 border rounded-xl bg-green-500 text-black border-white hover:border-transparent hover:text-cyan-600 hover:bg-orange-200">Nouveau créneau</a>

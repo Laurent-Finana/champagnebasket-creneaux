@@ -4,11 +4,13 @@
 {% endblock %}
 
 {% block body %}
-	<div class="flex flex-col items-center space-y-4 mb-4">
-		<table class="w-full text-sm text-left">
-			<caption class="caption-top text-2xl text-center py-6">
-				Liste des créneaux réservés
-			</caption>
+	<div class="flex flex-col items-center">
+		<h1 class="text-2xl text-center py-10">
+			Liste des créneaux réservés
+		</h1>
+
+
+		<table class="text-sm text-left">
 			<thead class="text-xs text-gray-700 uppercase">
 				<tr>
 					<th scope="col" class="px-6 py-3 text-center">Id</th>
@@ -16,7 +18,7 @@
 					<th scope="col" class="px-6 py-3 text-center">Début</th>
 					<th scope="col" class="px-6 py-3 text-center">Fin</th>
 					<th scope="col" class="px-6 py-3 text-center">Description</th>
-					<th scope="col" class="pl-6 pr-8 py-3 text-center">Equipe</th>
+					<th scope="col" class="px-6 py-3 text-center">Equipe</th>
 					<th scope="col" class="px-6 py-3 text-center">Actions</th>
 				</tr>
 			</thead>
@@ -27,7 +29,9 @@
 						<td class="px-6 py-4 text-center">{{ slot.title }}</td>
 						<td class="px-6 py-4 text-center">{{ slot.start ? slot.start|date('d-m-Y H:i') : '' }}</td>
 						<td class="px-6 py-4 text-center">{{ slot.end ? slot.end|date('d-m-Y H:i') : '' }}</td>
-						<td class="px-6 p-4 text-center"><textarea class="border border-gray-300 rounded-lg">{{ slot.description }}</textarea></td>
+						<td class="px-6 p-4 text-center">
+							<textarea class="border border-gray-300 rounded-lg">{{ slot.description }}</textarea>
+						</td>
 						{% if slot.backgroundColor == "#ffff00" %}
 							<td class="px-6 py-4 text-center">Pro B</td>
 						{% elseif slot.backgroundColor == "#fc87f9" %}
@@ -40,17 +44,17 @@
 							<td class="px-6 py-4 text-center">Cdf féminines</td>
 						{% endif %}
 						<td class="flex flex-row justify-center px-6 py-4 text-center">
-							<a href="{{ path('app_slot_show', {'id': slot.id}) }}" class="text-sm text-center px-2 py-2 border rounded-lg bg-sky-500 text-black border-white hover:border-transparent hover:text-cyan-600 hover:bg-orange-200">Voir</a>
-							<a href="{{ path('app_slot_edit', {'id': slot.id}) }}" class="text-sm text-center px-2 py-2 border rounded-lg bg-amber-200 text-black border-white hover:border-transparent hover:text-cyan-600 hover:bg-orange-200">Modifier</a>
+							<a href="{{ path('app_slot_show', {'id': slot.id}) }}" class="text-sm text-center mr-1 p-2 border rounded-lg bg-sky-500 text-black border-white hover:border-transparent hover:text-cyan-600 hover:bg-orange-200">Voir</a>
+							<a href="{{ path('app_slot_edit', {'id': slot.id}) }}" class="text-sm text-center p-2 border rounded-lg bg-orange-200 text-black border-white hover:border-transparent hover:text-cyan-600 hover:bg-orange-200">Modifier</a>
 						</td>
 					</tr>
-				</td>
+				{% endfor %}
+
 
 			</tbody>
-		</tr>
-	{% else %}
-		<tr>
-			<td colspan="9">Aucun enregistrement trouvé</td>
-		</tr>
-	{% endfor %}
-</tbody></table><a href="{{ path('app_slot_new') }}" class="hidden lg:flex text-sm text-center p-2 border rounded-lg bg-green-500 text-black border-white hover:border-transparent hover:text-cyan-600 hover:bg-orange-200">Ajouter un créneau</a></div>{% endblock %}
+		</table>
+		<div class="inline mt-4">
+			<a href="{{ path('app_slot_new') }}" class="text-sm text-center p-2 border rounded-lg bg-green-500 text-black border-white hover:border-transparent hover:text-cyan-600 hover:bg-orange-200">Ajouter un créneau</a>
+		</div>
+	</div>
+{% endblock %}
