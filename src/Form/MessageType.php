@@ -46,7 +46,7 @@ class MessageType extends AbstractType
             ])
             ->add('envoyer', SubmitType::class, [
                 "attr" => [
-                    "class" => "text-sm text-center my-2 px-2 py-2 rounded-lg bg-green-500 text-black hover:border-transparent hover:text-cyan-600 hover:bg-orange-200"
+                    "class" => "text-sm text-center my-2 block mx-auto px-2 py-2 rounded-lg bg-greenTheme text-black hover:border-transparent hover:bg-green-300"
                 ]
             ]);
     }

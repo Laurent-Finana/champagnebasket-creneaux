@@ -37,9 +37,9 @@
 						</td>
 						<td class="px-6 py-4 text-center {{ bold }}">{{ message.createdAt|date }}</td>
 						<td class="flex flex-row justify-center px-6 py-4 text-center {{ bold }}">
-							<a href="{{ path('app_message_read_sent', {id: message.id}) }}" class="text-sm text-center p-2 border rounded-lg bg-sky-500 text-black border-white hover:border-transparent hover:text-cyan-600 hover:bg-orange-200">Voir</a>
+							<a href="{{ path('app_message_read_sent', {id: message.id}) }}" class="text-sm text-center p-2 border rounded-lg bg-blue-400 text-black border-white hover:border-transparent hover:bg-blue-300">Voir</a>
 							<a href="{{ path('app_message_delete', {id: message.id}) }}" onclick="return confirm('Etes-vous sûr de vouloir supprimer cet élément ?');">
-								<svg xmlns="http://www.w3.org/2000/svg" width="24" height="22" fill="currentColor" class="bi bi-trash-fill text-red-500 mx-2 mt-2" viewbox="0 0 16 16">
+								<svg xmlns="http://www.w3.org/2000/svg" width="24" height="22" fill="currentColor" class="bi bi-trash-fill text-red-500 hover:text-red-400 mx-2 mt-2" viewbox="0 0 16 16">
 									<path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"/>
 								</svg>
 							</a>
@@ -49,8 +49,8 @@
 			</tbody>
 		</table>
 		<div class="inline mt-4">
-			<a href="{{ path('app_message_received') }}" class="text-sm text-center p-2 border rounded-lg bg-amber-200 text-black border-white hover:border-transparent hover:text-cyan-600 hover:bg-orange-200">Boîte de réception</a>
-			<a href="{{ path('app_message_send') }}" class="text-sm text-center p-2 border rounded-lg bg-green-500 text-black border-white hover:border-transparent hover:text-cyan-600 hover:bg-orange-200">Envoyer un message</a>
+			<a href="{{ path('app_message_received') }}" class="text-sm text-center p-2 border rounded-lg bg-amber-200 text-black border-white hover:border-transparent hover:bg-amber-100">Boîte de réception</a>
+			<a href="{{ path('app_message_send') }}" class="text-sm text-center p-2 border rounded-lg bg-greenTheme text-black border-white hover:border-transparent hover:bg-green-300">Envoyer un message</a>
 		</div>
 	</div>
 {% endblock %}
