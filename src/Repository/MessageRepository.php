@@ -26,7 +26,7 @@ class MessageRepository extends ServiceEntityRepository
      * 
      * @return Message[] Returns an array of Message objects
      */
-    public function findAllOrderedByDate()
+    public function findMessageOrderedByDate()
     {
         return $this->createQueryBuilder('m')
             ->orderBy('m.created_at', 'DESC')

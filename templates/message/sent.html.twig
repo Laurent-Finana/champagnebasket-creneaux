@@ -19,24 +19,19 @@
 				</tr>
 			</thead>
 			<tbody>
-				{% for message in app.user.sent %}
+				{% for message in app.user.sent|reverse %}
 
-					{% if message.isRead == 0 %}
-						{% set bold = "font-bold" %}
-					{% else %}
-						{% set bold = "" %}
-					{% endif %}
 					<tr class="bg-white border-b hover:bg-gray-100">
 
-						<td class="px-6 py-4 text-center {{ bold }}">
+						<td class="px-6 py-4 text-center">
 							<a href="{{ path('app_message_read_sent', {id: message.id}) }}">{{ message.recipient.firstname }}
 								{{ message.recipient.lastname }}</a>
 						</td>
-						<td class="px-6 py-4 text-center {{ bold }}">
+						<td class="px-6 py-4 text-center">
 							<a href="{{ path('app_message_read_sent', {id: message.id}) }}">{{ message.title }}</a>
 						</td>
-						<td class="px-6 py-4 text-center {{ bold }}">{{ message.createdAt|date }}</td>
-						<td class="flex flex-row justify-center px-6 py-4 text-center {{ bold }}">
+						<td class="px-6 py-4 text-center">{{ message.createdAt|date }}</td>
+						<td class="flex flex-row justify-center px-6 py-4 text-center">
 							<a href="{{ path('app_message_read_sent', {id: message.id}) }}" class="text-sm text-center p-2 border rounded-lg bg-blue-400 text-black border-white hover:border-transparent hover:bg-blue-300">Voir</a>
 							<a href="{{ path('app_message_delete', {id: message.id}) }}" onclick="return confirm('Etes-vous sûr de vouloir supprimer cet élément ?');">
 								<svg xmlns="http://www.w3.org/2000/svg" width="24" height="22" fill="currentColor" class="bi bi-trash-fill text-red-500 hover:text-red-400 mx-2 mt-2" viewbox="0 0 16 16">

@@ -22,7 +22,7 @@
 		<h2 class="mb-8 text-xl text-center underline">{{ message.title }}</h2>
 		<div class="text-center w-1/2 mx-auto">{{ message.content|nl2br }}</div>
 
-		<a href="#" class="text-sm text-center block mx-auto mt-8 w-64 p-2 border rounded-lg bg-blue-400 text-black border-white hover:border-transparent hover:bg-blue-300">Répondre</a>
+		<a href="{{ path('app_message_send') }}" class="text-sm text-center block mx-auto mt-8 w-64 p-2 border rounded-lg bg-blue-400 text-black border-white hover:border-transparent hover:bg-blue-300">Répondre</a>
 		<a href="{{ path('app_message_received')}}" class="text-sm text-center block mx-auto mt-4 w-64 p-2 border rounded-lg bg-amber-100 text-black border-white hover:border-transparent hover:bg-amber-50">Boîte de réception</a>
 
 	</section>

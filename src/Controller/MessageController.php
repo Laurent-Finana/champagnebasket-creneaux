@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Message;
+use App\Entity\User;
 use App\Form\MessageType;
 use App\Repository\MessageRepository;
 use Doctrine\ORM\EntityManagerInterface;
@@ -49,14 +50,9 @@ class MessageController extends AbstractController
     }
 
     #[Route('/received', name: 'app_message_received')]
-    public function received(MessageRepository $messageRepository): Response
+    public function received(): Response
     {
-        $messages = $messageRepository->findAllOrderedByDate();
-
-
-        return $this->render('message/received.html.twig', [
-            "messages" => $messages
-        ]);
+        return $this->render('message/received.html.twig');
     }
 
     #[Route('/sent', name: 'app_message_sent')]
@@ -77,7 +73,7 @@ class MessageController extends AbstractController
     #[Route('/read/sent/{id}', name: 'app_message_read_sent')]
     public function read_sent(Message $message, EntityManagerInterface $em): Response
     {
-        $message->setIsRead(true);
+        /* $message->setIsRead(true); */
         $em->persist($message);
         $em->flush();
         return $this->render('message/read-sent.html.twig', compact("message"));

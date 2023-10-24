@@ -22,7 +22,7 @@
 				</tr>
 			</thead>
 			<tbody>
-				{% for message in messages %}
+				{% for message in app.user.received|reverse %}
 
 					{% if message.isRead == 0 %}
 						{% set bold = "font-bold" %}
