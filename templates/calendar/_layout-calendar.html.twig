@@ -9,8 +9,8 @@
 
 	{% if is_granted('ROLE_COACH') %}
 		<script>
-
-			window.onload = () => {
+			if (window.innerWidth < 768) {
+window.onload = () => {
 let calendarElt = document.querySelector("#calendrier");
 
 let calendar = new FullCalendar.Calendar(calendarElt, {
@@ -19,6 +19,59 @@ locale: 'fr',
 firstDay: 1,
 timeZone: 'Europe/Paris',
 scrollTime: '09:00:00',
+
+headerToolbar: {
+left: 'title',
+end: 'prev,next'
+},
+allDaySlot: false,
+events: {{ data|raw }},
+editable: true,
+
+
+eventDrop: (infos) => {
+if (!confirm("Êtes-vous sûr de vouloir déplacer ce créneau d'entraînement ?")) {
+infos.revert();
+}
+},
+eventResizableFromStart: true,
+eventClick: function (info) {
+alert('Description: ' + info.event.extendedProps.description);
+}
+});
+
+calendar.on('eventChange', (e) => {
+let url = `/api/${
+e.event.id
+}/edit`
+let userData = {
+"title": e.event.title,
+"description": e.event.extendedProps.description,
+"start": e.event.start,
+"end": e.event.end,
+"backgroundColor": e.event.backgroundColor,
+"textColor": e.event.textColor
+}
+
+let xhr = new XMLHttpRequest
+
+xhr.open("PUT", url)
+xhr.send(JSON.stringify(userData))
+
+});
+calendar.render();
+}
+} else {
+window.onload = () => {
+let calendarElt = document.querySelector("#calendrier");
+
+let calendar = new FullCalendar.Calendar(calendarElt, {
+initialView: 'timeGridWeek',
+locale: 'fr',
+firstDay: 1,
+timeZone: 'Europe/Paris',
+scrollTime: '09:00:00',
+
 headerToolbar: {
 left: 'dayGridMonth,timeGridWeek,list',
 center: 'title',
@@ -67,9 +120,11 @@ xhr.send(JSON.stringify(userData))
 });
 calendar.render();
 }
+}
 		</script>
 
 	{% else %}
+
 
 		<script>
 			window.onload = () => {
