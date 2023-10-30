@@ -9,7 +9,7 @@
 	</h1>
 
 	<div class="mb-4 text-center">
-		<a href="{{ path('app_slot_new') }}" class="w-32 mx-auto text-sm text-center p-2 border rounded-lg text-greenTheme border-greenTheme hover:border-transparent hover:text-black hover:bg-green-300">Ajouter un créneau</a>
+		<a href="{{ path('app_slot_new') }}" class="w-32 mx-auto text-sm text-center p-2 border rounded-lg text-green-300 border-green-300 hover:border-transparent hover:text-black hover:bg-green-300">Ajouter un créneau</a>
 	</div>
 
 	<div class="flex items-center justify-center ml-4 sm:ml-0">
@@ -55,9 +55,10 @@
 						{% elseif slot.backgroundColor == "#EE9209" %}
 							<td class="td-class text-colorCdfFeminines">Cdf féminines</td>
 						{% endif %}
-						<td class="td-class">
+						<td class="td-class space-y-1">
 							<a href="{{ path('app_slot_show', {'id': slot.id}) }}" class="text-sm text-center mr-1 p-2 border rounded-lg text-blue-400  border-blue-400 hover:border-transparent hover:text-black hover:bg-blue-300">Voir</a>
-							<a href="{{ path('app_slot_edit', {'id': slot.id}) }}" class="text-sm text-center p-2 border rounded-lg text-amber-400 border-amber-400 hover:border-transparent hover:text-black hover:bg-amber-50">Modifier</a>
+							<a href="{{ path('app_slot_edit', {'id': slot.id}) }}" class="text-sm text-center p-2 border rounded-lg text-yellow-100 border-yellow-100 hover:border-transparent hover:text-black hover:bg-yellow-100">Modifier</a>
+							{{ include('slot/_delete_form.html.twig') }}
 						</td>
 					</tr>
 				{% endfor %}
