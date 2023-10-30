@@ -19,7 +19,7 @@
 			{{ encore_entry_script_tags('app') }}
 		{% endblock %}
 	</head>
-	<body class="h-screen bg-indigo-50 ">
+	<body class="h-screen bg-gray-200 ">
 		{% block nav %}
 			<nav class="relative p-4 flex justify-between items-center bg-navbarBg">
 				<a class="text-sm lg:text-lg" href="{{ path('app_main')}}">
@@ -195,11 +195,11 @@
 		<div class="lg:flex lg:flex-row">
 
 			{% block aside %}
-				<div class="hidden lg:flex lg:flex-col items-center bg-gray-200 lg:min-h-screen">
+				<div class="hidden lg:flex lg:flex-col items-center bg-gray-700 lg:min-h-screen">
 					{% if is_granted('ROLE_COACH') %}
 
 						<a href="{{ path('app_slot_new')}}" class="text-sm text-center m-4 p-2 border rounded-xl text-greenTheme border-greenTheme hover:border-transparent hover:text-black hover:bg-green-300">Nouveau créneau</a>
-						<a href="{{ path('app_slot_index')}}" class="text-sm text-center mx-4 p-2 border rounded-xl text-buttonYellow border-buttonYellow hover:border-transparent hover:text-black hover:bg-amber-50">Modifier un créneau</a>
+						<a href="{{ path('app_slot_index')}}" class="text-sm text-center mx-4 p-2 border rounded-xl text-amber-200 border-amber-200 hover:border-transparent hover:text-black hover:bg-amber-50">Modifier un créneau</a>
 						<a href="{{ path('app_slot_index')}}" class="text-sm text-center m-4 p-2 border rounded-xl text-blue-400 border-blue-400 hover:border-transparent hover:text-black hover:bg-blue-300">Liste des créneaux</a>
 
 					{% elseif is_granted('ROLE_PLAYER') %}
@@ -208,7 +208,7 @@
 				</div>
 			{% endblock %}
 
-			<div class="container mx-auto"> {% block body %}{% endblock %}
+			<div class="container p-2 mx-auto"> {% block body %}{% endblock %}
 				</div>
 			</div>
 

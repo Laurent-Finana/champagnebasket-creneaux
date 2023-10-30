@@ -9,8 +9,11 @@ module.exports = {
     extend: {
       colors: {
         navbarBg: "#B09746",
-        blueTheme: "#01b5e7",
-        pinkTheme: "#ee3c96",
+        colorProB: "#ffff00",
+        colorLigue2: "#fc87f9",
+        colorEspoirs: "#00b0f0",
+        colorU18: "#92d050",
+        colorCdfFeminines: "#EE9209",
         greenTheme: "#06bb64",
         buttonYellow: "#e9b308",
       },

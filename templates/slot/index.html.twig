@@ -4,16 +4,19 @@
 {% endblock %}
 
 {% block body %}
-	<div class="flex flex-col items-center">
-		<h1 class="text-2xl text-center py-10">
-			Liste des créneaux réservés
-		</h1>
+	<h1 class="text-2xl text-center py-10">
+		Liste des créneaux réservés
+	</h1>
 
+	<div class="mb-4 text-center">
+		<a href="{{ path('app_slot_new') }}" class="w-32 mx-auto text-sm text-center p-2 border rounded-lg text-greenTheme border-greenTheme hover:border-transparent hover:text-black hover:bg-green-300">Ajouter un créneau</a>
+	</div>
 
-		<table class="text-sm text-left mx-auto">
-			<thead class="text-xs text-gray-700 uppercase">
-				<tr>
-					<th scope="col" class="px-6 py-3 text-center">Id</th>
+	<div class="flex items-center justify-center ml-4 sm:ml-0">
+
+		<table class="text-sm border-separate border-spacing-y-2">
+			<thead class="sr-only lg:not-sr-only">
+				<tr class="tr-class">
 					<th scope="col" class="px-6 py-3 text-center">Titre</th>
 					<th scope="col" class="px-6 py-3 text-center">Début</th>
 					<th scope="col" class="px-6 py-3 text-center">Fin</th>
@@ -23,29 +26,38 @@
 				</tr>
 			</thead>
 			<tbody>
-				{% for slot in slots %}
-					<tr class="bg-white border-b hover:bg-gray-100">
-						<td class="px-6 py-4 text-center">{{ slot.id }}</td>
-						<td class="px-6 py-4 text-center">{{ slot.title }}</td>
-						<td class="px-6 py-4 text-center">{{ slot.start ? slot.start|date('d-m-Y H:i') : '' }}</td>
-						<td class="px-6 py-4 text-center">{{ slot.end ? slot.end|date('d-m-Y H:i') : '' }}</td>
-						<td class="px-6 p-4 text-center">
+				{% for slot in slots|reverse %}
+					<tr class="tr-class">
+						{% if slot.backgroundColor == "#ffff00" %}
+							<td class="td-class underline font-semibold text-colorProB">{{ slot.title }}</td>
+						{% elseif slot.backgroundColor == "#fc87f9" %}
+							<td class="td-class underline font-semibold text-colorLigue2">{{ slot.title }}</td>
+						{% elseif slot.backgroundColor == "#00b0f0" %}
+							<td class="td-class underline font-semibold text-colorEspoirs">{{ slot.title }}</td>
+						{% elseif slot.backgroundColor == "#92d050" %}
+							<td class="td-class underline font-semibold text-colorU18">{{ slot.title }}</td>
+						{% elseif slot.backgroundColor == "#EE9209" %}
+							<td class="td-class underline font-semibold text-colorCdfFeminines">{{ slot.title }}</td>
+						{% endif %}
+						<td class="td-class">{{ slot.start ? slot.start|date('d-m-Y H:i') : '' }}</td>
+						<td class="td-class">{{ slot.end ? slot.end|date('d-m-Y H:i') : '' }}</td>
+						<td class="td-class">
 							<textarea class="border border-gray-300 rounded-lg">{{ slot.description }}</textarea>
 						</td>
 						{% if slot.backgroundColor == "#ffff00" %}
-							<td class="px-6 py-4 text-center">Pro B</td>
+							<td class="td-class text-colorProB">Pro B</td>
 						{% elseif slot.backgroundColor == "#fc87f9" %}
-							<td class="px-6 py-4 text-center">Ligue 2</td>
+							<td class="td-class text-colorLigue2">Ligue 2</td>
 						{% elseif slot.backgroundColor == "#00b0f0" %}
-							<td class="px-6 py-4 text-center">Espoirs</td>
+							<td class="td-class text-colorEspoirs">Espoirs</td>
 						{% elseif slot.backgroundColor == "#92d050" %}
-							<td class="px-6 py-4 text-center">U18</td>
+							<td class="td-class text-colorU18">U18</td>
 						{% elseif slot.backgroundColor == "#EE9209" %}
-							<td class="px-6 py-4 text-center">Cdf féminines</td>
+							<td class="td-class text-colorCdfFeminines">Cdf féminines</td>
 						{% endif %}
-						<td class="flex flex-row justify-center px-6 py-4 text-center">
-							<a href="{{ path('app_slot_show', {'id': slot.id}) }}" class="text-sm text-center mr-1 p-2 border rounded-lg bg-blue-400 text-black border-white hover:border-transparent hover:bg-blue-300">Voir</a>
-							<a href="{{ path('app_slot_edit', {'id': slot.id}) }}" class="text-sm text-center p-2 border rounded-lg bg-amber-100 text-black border-white hover:border-transparent hover:bg-amber-50">Modifier</a>
+						<td class="td-class">
+							<a href="{{ path('app_slot_show', {'id': slot.id}) }}" class="text-sm text-center mr-1 p-2 border rounded-lg text-blue-400  border-blue-400 hover:border-transparent hover:text-black hover:bg-blue-300">Voir</a>
+							<a href="{{ path('app_slot_edit', {'id': slot.id}) }}" class="text-sm text-center p-2 border rounded-lg text-amber-400 border-amber-400 hover:border-transparent hover:text-black hover:bg-amber-50">Modifier</a>
 						</td>
 					</tr>
 				{% endfor %}
@@ -53,8 +65,8 @@
 
 			</tbody>
 		</table>
-		<div class="inline mt-4">
-			<a href="{{ path('app_slot_new') }}" class="text-sm text-center p-2 border rounded-lg text-greenTheme border-greenTheme hover:border-transparent hover:text-black hover:bg-green-300">Ajouter un créneau</a>
-		</div>
 	</div>
 {% endblock %}
+
+
+{# {% if slot.backgroundColor == " #ffff00" %}bg-colorProB {% elseif slot.backgroundColor == " #fc87f9" %}bg-colorLigue2 {% elseif slot.backgroundColor == " #00b0f0" %}bg-colorEspoirs {% elseif slot.backgroundColor == " #92d050" %} bg-colorU18 {% elseif slot.backgroundColor == " #EE9209" %} bg-colorCdfFeminines {% endif %} #}

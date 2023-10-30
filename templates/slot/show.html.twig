@@ -9,46 +9,57 @@
 		<h1 class="text-2xl text-center m-2 py-4">Créneau</h1>
 
 		<table>
-			<tbody class="flex flex-col">
+			<tbody class="flex flex-col space-y-4">
 				<tr>
-					<th class="px-4 py-2 hidden">Id</th>
+					<th class="sr-only">Id</th>
 					<td class="hidden">{{ slot.id }}</td>
 				</tr>
 				<tr>
-					<th class="px-4 py-2">Titre</th>
-					<td>{{ slot.title }}</td>
+					<th class="sr-only">Titre</th>
+					{% if slot.backgroundColor == "#ffff00" %}
+						<td class="text-colorProB underline">{{ slot.title }}</td>
+					{% elseif slot.backgroundColor == "#fc87f9" %}
+						<td class="text-colorLigue2 underline">{{ slot.title }}</td>
+					{% elseif slot.backgroundColor == "#00b0f0" %}
+						<td class="text-colorEspoirs underline">{{ slot.title }}</td>
+					{% elseif slot.backgroundColor == "#92d050" %}
+						<td class="text-colorU18 underline">U18</td>
+					{% elseif slot.backgroundColor == "#EE9209" %}
+						<td class="text-colorCdfFeminines underline">{{ slot.title }}</td>
+					{% endif %}
 				</tr>
 				<tr>
-					<th class="px-4 py-2">Début</th>
+					<th class="sr-only">Début</th>
 					<td>{{ slot.start ? slot.start|date('d-m-Y H:i') : '' }}</td>
 				</tr>
 				<tr>
-					<th class="px-4 py-2">Fin</th>
+					<th class="sr-only">Fin</th>
 					<td>{{ slot.end ? slot.end|date('d-m-Y H:i') : '' }}</td>
 				</tr>
 				<tr>
-					<th class="px-4 py-2">Description</th>
+					<th class="sr-only">Description</th>
 					<td>{{ slot.description }}</td>
 				</tr>
 				<tr>
-					<th class="px-4 py-2">Equipe</th>
+					<th class="sr-only">Equipe</th>
 					{% if slot.backgroundColor == "#ffff00" %}
-						<td>Pro B</td>
+						<td class="text-colorProB">Pro B</td>
 					{% elseif slot.backgroundColor == "#fc87f9" %}
-						<td>Ligue 2</td>
+						<td class="text-colorLigue2">Ligue 2</td>
 					{% elseif slot.backgroundColor == "#00b0f0" %}
-						<td>Espoirs</td>
+						<td class="text-colorEspoirs">Espoirs</td>
 					{% elseif slot.backgroundColor == "#92d050" %}
-						<td>U18</td>
+						<td class="text-colorU18">U18</td>
 					{% elseif slot.backgroundColor == "#EE9209" %}
-						<td>Cdf féminines</td>
+						<td class="text-colorCdfFeminines">Cdf féminines</td>
 					{% endif %}
 				</tr>
 			</tbody>
 		</table>
-
-		<a href="{{ path('app_slot_edit', {'id': slot.id}) }}" class="text-sm text-center my-2 p-2 border rounded-lg bg-amber-100 text-black hover:border-transparent hover:bg-amber-50">Modifier</a>
-		<a href="{{ path('app_slot_index') }}" class="text-sm text-center p-2 border rounded-lg bg-blue-400 text-black hover:border-transparent hover:bg-blue-300">Retour à la liste</a>
-		{{ include('slot/_delete_form.html.twig') }}
+		<div class="mt-4 flex flex-col">
+			<a href="{{ path('app_slot_edit', {'id': slot.id}) }}" class="text-sm text-center my-2 p-2 border rounded-lg text-amber-400 border-amber-400 hover:border-transparent hover:text-black hover:bg-amber-50">Modifier</a>
+			<a href="{{ path('app_slot_index') }}" class="text-sm text-center p-2 border rounded-lg text-blue-400 border-blue-400 hover:border-transparent hover:text-black hover:bg-blue-300">Retour à la liste</a>
+			{{ include('slot/_delete_form.html.twig') }}
+		</div>
 	</div>
 {% endblock %}
