@@ -4,9 +4,9 @@
 {% endblock %}
 
 {% block body %}
-	<div class="my-10 max-w-md mx-auto">
+	<div class="p-4 lg:p-0 lg:py-10 max-w-md mx-auto">
 		<h1 class="mb-8 text-2xl text-center">Nouveau créneau</h1>
 		{{ include('slot/_form.html.twig') }}
-		<a href="{{ path('app_slot_index') }}" class="block text-sm text-center p-2 rounded-lg bg-blue-400 text-black hover:border-transparent hover:bg-blue-300">Retour à la liste</a>
+		<a href="{{ path('app_slot_index') }}" class="block w-32 mx-auto text-sm text-center p-2 rounded-lg text-blue-400 border border-blue-400 hover:border-transparent hover:text-black hover:bg-blue-300">Retour à la liste</a>
 	</div>
 {% endblock %}

@@ -12,6 +12,7 @@ module.exports = {
         blueTheme: "#01b5e7",
         pinkTheme: "#ee3c96",
         greenTheme: "#06bb64",
+        buttonYellow: "#e9b308",
       },
     },
   },
