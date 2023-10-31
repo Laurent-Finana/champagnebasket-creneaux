@@ -165,8 +165,8 @@
 								{% if is_granted('ROLE_COACH') %}
 									<a href="{{ path('app_slot_new')}}" class="block p-4 text-sm font-semibold hover:bg-blue-50 hover:text-blue-600 rounded {% if (app.request.attributes.get('_route') == 'app_slot_new') %} text-blue-600 font-bold underline {% else %}  text-gray-400 {% endif %}">Nouveau créneau</a>
 									<a href="{{ path('app_slot_index')}}" class="block p-4 text-sm font-semibold hover:bg-blue-50 hover:text-blue-600 rounded {% if (app.request.attributes.get('_route') == 'app_slot_index') %} text-blue-600 font-bold underline {% else %}  text-gray-400 {% endif %}">Modifier un créneau</a>
-									<a href="{{ path('app_slot_index')}}" class="block p-4 text-sm font-semibold hover:bg-blue-50 hover:text-blue-600 rounded {% if (app.request.attributes.get('_route') == 'app_slot_index') %} text-blue-600 font-bold underline {% else %}  text-gray-400 {% endif %}">Liste des créneaux</a>
-
+									{# 									<a href="{{ path('app_slot_index')}}" class="block p-4 text-sm font-semibold hover:bg-blue-50 hover:text-blue-600 rounded {% if (app.request.attributes.get('_route') == 'app_slot_index') %} text-blue-600 font-bold underline {% else %}  text-gray-400 {% endif %}">Liste des créneaux</a>
+									 #}
 								{% elseif is_granted('ROLE_PLAYER') %}
 									<a href="{{ path('app_message_send')}}" class="block p-4 text-sm font-semibold hover:bg-blue-50 hover:text-blue-600 rounded {% if (app.request.attributes.get('_route') == 'app_message_send') %} text-blue-600 font-bold underline {% else %}  text-gray-400 {% endif %}">Demander un créneau</a>
 								{% endif %}
@@ -200,7 +200,7 @@
 
 						<a href="{{ path('app_slot_new')}}" class="mx-4 mt-4 button-green">Nouveau créneau</a>
 						<a href="{{ path('app_slot_index')}}" class="m-4 button-yellow">Modifier un créneau</a>
-						<a href="{{ path('app_slot_index')}}" class="button-blue">Liste des créneaux</a>
+						{# <a href="{{ path('app_slot_index')}}" class="button-blue">Liste des créneaux</a> #}
 
 					{% elseif is_granted('ROLE_PLAYER') %}
 						<a href="{{ path('app_message_send')}}" class="button-green">Demander un créneau</a>
@@ -212,6 +212,25 @@
 				</div>
 			</div>
 
+			{% block footer %}
+				<footer>
+
+					<div class="bg-navbarBg">
+						<ul class="flex justify-center items-center space-x-10 text-sm p-2 text-white">
+							<li>
+								<a href="">A propos</a>
+							</li>
+							<li>
+								<a href="">Mentions légales</a>
+							</li>
+							<li>
+								<a href="">Contact</a>
+							</li>
+						</ul>
+					</div>
+
+				</footer>
+			{% endblock %}
 
 		</body>
 	</html>
