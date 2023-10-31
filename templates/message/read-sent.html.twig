@@ -6,21 +6,26 @@
 
 {% block body %}
 
-	<div class="my-10  mx-auto">
+	<div class="my-10 max-w-md mx-auto bg-gray-300">
 		<h1 class="mb-8 text-2xl text-center">Message envoyé</h1>
-		<section class="flex justify-center space-x-4">
-			<p>Message à :</p>
-			<p class="text-blue-600">
-				{{ message.recipient.firstname }}
-				{{ message.recipient.lastname }}</p>
-			<p>Le :
-				{{ message.createdAt|date("d/m/Y", "Europe/Paris") }}</p>
+		<section class="flex flex-col items-center first-letter:justify-center space-y-2">
+			<div class="flex">
+				<p>Message à :
+					<span class="text-blue-600">
+						{{ message.recipient.firstname }}
+						{{ message.recipient.lastname }}
+					</span>
+					- Le :
+					{{ message.createdAt|date("d/m/Y", "Europe/Paris") }}</p>
+			</div>
+			<h2 class="mb-8 text-xl text-center text-white underline">{{ message.title }}</h2>
+			<div class="text-center w-1/2 mx-auto">{{ message.content|nl2br }}</div>
 
-		</div>
-		<h2 class="mb-8 text-xl text-center underline">{{ message.title }}</h2>
-		<div class="text-center w-1/2 mx-auto">{{ message.content|nl2br }}</div>
-
-		<a href="{{ path('app_message_received')}}" class="text-sm text-center block mx-auto mt-4 w-64 p-2 border rounded-lg bg-amber-100 text-black border-white hover:border-transparent hover:bg-amber-50">Boîte de réception</a>
-
-	</section>
+			<div>
+				<a href="{{ path('app_message_received')}}" class="block w-40 mx-auto button-yellow">Boîte de réception</a>
+				<a href="{{ path('app_message_send') }}" class="block w-32 mx-auto my-2 button-blue">Répondre</a>
+				<a href="{{ path('app_message_delete', {id: message.id}) }}" onclick="return confirm('Etes-vous sûr de vouloir supprimer cet élément ?');" class="block w-32 mx-auto my-2 button-red">Supprimer</a>
+			</div>
+		</section>
+	</div>
 {% endblock %}

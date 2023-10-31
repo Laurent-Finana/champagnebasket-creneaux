@@ -19,7 +19,7 @@
 			{{ encore_entry_script_tags('app') }}
 		{% endblock %}
 	</head>
-	<body class="h-screen bg-neutral-400">
+	<body class="h-screen bg-neutral-100">
 		{% block nav %}
 			<nav class="relative p-4 flex justify-between items-center bg-navbarBg">
 				<a class="text-sm lg:text-lg" href="{{ path('app_main')}}">
@@ -198,12 +198,12 @@
 				<div class="hidden lg:flex lg:flex-col items-center bg-gray-700 lg:min-h-screen">
 					{% if is_granted('ROLE_COACH') %}
 
-						<a href="{{ path('app_slot_new')}}" class="text-sm text-center m-4 p-2 border rounded-xl text-greenTheme border-greenTheme hover:border-transparent hover:text-black hover:bg-green-300">Nouveau créneau</a>
-						<a href="{{ path('app_slot_index')}}" class="text-sm text-center mx-4 p-2 border rounded-xl text-amber-200 border-amber-200 hover:border-transparent hover:text-black hover:bg-amber-50">Modifier un créneau</a>
-						<a href="{{ path('app_slot_index')}}" class="text-sm text-center m-4 p-2 border rounded-xl text-blue-400 border-blue-400 hover:border-transparent hover:text-black hover:bg-blue-300">Liste des créneaux</a>
+						<a href="{{ path('app_slot_new')}}" class="mx-4 mt-4 button-green">Nouveau créneau</a>
+						<a href="{{ path('app_slot_index')}}" class="m-4 button-yellow">Modifier un créneau</a>
+						<a href="{{ path('app_slot_index')}}" class="button-blue">Liste des créneaux</a>
 
 					{% elseif is_granted('ROLE_PLAYER') %}
-						<a href="{{ path('app_message_send')}}" class="text-sm text-center m-4 p-2 border rounded-xl text-greenTheme border-greenTheme hover:border-transparent hover:text-black hover:bg-green-300">Demander un créneau</a>
+						<a href="{{ path('app_message_send')}}" class="button-green">Demander un créneau</a>
 					{% endif %}
 				</div>
 			{% endblock %}

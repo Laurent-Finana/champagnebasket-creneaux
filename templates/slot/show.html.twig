@@ -5,7 +5,7 @@
 
 {% block body %}
 
-	<div class="flex flex-col items-center">
+	<div class="flex flex-col items-center max-w-md mx-auto bg-gray-300">
 		<h1 class="text-2xl text-center m-2 py-4">Créneau</h1>
 
 		<table>
@@ -57,8 +57,8 @@
 			</tbody>
 		</table>
 		<div class="mt-4 flex flex-col">
-			<a href="{{ path('app_slot_edit', {'id': slot.id}) }}" class="text-sm text-center my-2 p-2 border rounded-lg text-amber-400 border-amber-400 hover:border-transparent hover:text-black hover:bg-amber-50">Modifier</a>
-			<a href="{{ path('app_slot_index') }}" class="text-sm text-center p-2 border rounded-lg text-blue-400 border-blue-400 hover:border-transparent hover:text-black hover:bg-blue-300">Retour à la liste</a>
+			<a href="{{ path('app_slot_edit', {'id': slot.id}) }}" class="text-sm text-center my-2 button-yellow">Modifier</a>
+			<a href="{{ path('app_slot_index') }}" class="button-blue">Retour à la liste</a>
 			{{ include('slot/_delete_form.html.twig') }}
 		</div>
 	</div>
