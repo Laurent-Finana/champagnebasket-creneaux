@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit User
+{% endblock %}
+
+{% block body %}
+	<h1>Edit User</h1>
+
+	{{ include('user/_form.html.twig', {'button_label': 'Mettre à jour votre profil'}) }}
+
+	<a href="{{ path('app_main') }}" class="button-blue">Annuler</a>
+
+	{{ include('user/_delete_form.html.twig') }}
+
+{% endblock %}
