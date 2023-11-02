@@ -91,7 +91,7 @@
 				<ul class="hidden lg:flex justify-center items-center space-x-12 lg:text-center">
 					{% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
 						<li>
-							<a href="{{ path('app_user_edit', {id: app.user.id})}}" class="text-sm hover:text-gray-500 {% if (app.request.attributes.get('_route') == 'app_user_edit') %} text-blue-600 font-bold underline {% else %} text-white {% endif %}">Mon compte</a>
+							<a href="{{ path('app_user_edit', {id: app.user.id})}}" class="text-sm hover:text-gray-500  text-white">Mon compte</a>
 						</li>
 						<div>
 							<li>
@@ -116,6 +116,7 @@
 				</ul>
 
 			</nav>
+
 			<div class="navbar-menu relative z-50 hidden">
 				<div class="navbar-backdrop fixed inset-0 bg-gray-800 opacity-25"></div>
 				<nav class="fixed top-0 left-0 bottom-0 flex flex-col w-5/6 max-w-sm py-6 px-6 bg-white border-r overflow-y-auto">
@@ -171,7 +172,7 @@
 									<a href="{{ path('app_slot_new')}}" class="block p-4 text-sm font-semibold hover:bg-blue-50 hover:text-blue-600 rounded {% if (app.request.attributes.get('_route') == 'app_slot_new') %} text-blue-600 font-bold underline {% else %}  text-gray-400 {% endif %}">Nouveau créneau</a>
 									<a href="{{ path('app_slot_index')}}" class="block p-4 text-sm font-semibold hover:bg-blue-50 hover:text-blue-600 rounded {% if (app.request.attributes.get('_route') == 'app_slot_index') %} text-blue-600 font-bold underline {% else %}  text-gray-400 {% endif %}">Modifier un créneau</a>
 									{# 									<a href="{{ path('app_slot_index')}}" class="block p-4 text-sm font-semibold hover:bg-blue-50 hover:text-blue-600 rounded {% if (app.request.attributes.get('_route') == 'app_slot_index') %} text-blue-600 font-bold underline {% else %}  text-gray-400 {% endif %}">Liste des créneaux</a>
-																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																											 #}
+																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																				 #}
 								{% elseif is_granted('ROLE_PLAYER') %}
 									<a href="{{ path('app_message_send')}}" class="block p-4 text-sm font-semibold hover:bg-blue-50 hover:text-blue-600 rounded {% if (app.request.attributes.get('_route') == 'app_message_send') %} text-blue-600 font-bold underline {% else %}  text-gray-400 {% endif %}">Demander un créneau</a>
 								{% endif %}
@@ -182,7 +183,8 @@
 					<div class="my-auto">
 						<div class="pt-6">
 							{% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
-								<a class="block px-4 py-3 mb-3 text-xs text-center font-semibold leading-none bg-gray-50 hover:bg-gray-100 rounded-xl" href="{{ path('app_logout')}}">Déconnexion</a>
+								<a href="{{ path('app_user_edit', {id: app.user.id})}}" class="p-4 text-sm font-semibold hover:bg-blue-50 hover:text-blue-600 rounded {% if (app.request.attributes.get('_route') == 'app_user_edit') %} text-blue-600 font-bold underline {% else %}  text-gray-400 {% endif %}">Mon compte</a>
+								<a class="block px-4 py-3 mb-3 mt-6 text-xs text-center font-semibold leading-none bg-gray-50 hover:bg-gray-100 rounded-xl" href="{{ path('app_logout')}}">Déconnexion</a>
 							{% else %}
 								<a class="block px-4 py-3 mb-2 leading-loose text-xs text-center text-white font-semibold bg-blue-600 hover:bg-blue-700  rounded-xl" href="{{ path('app_login')}}">Connexion</a>
 								<p class="my-4 text-xs text-center text-gray-400">

@@ -1,15 +1,17 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Edit User
+{% block title %}Mon compte
 {% endblock %}
 
 {% block body %}
-	<h1>Edit User</h1>
+	<div class="my-20 max-w-md mx-auto">
+		<h1 class="mb-8 text-2xl text-center">Informations personnelles</h1>
+		<div class="inline">
+			{{ include('user/_form.html.twig', {'button_label': 'Sauvegarder les modifications'}) }}
 
-	{{ include('user/_form.html.twig', {'button_label': 'Mettre à jour votre profil'}) }}
+			<a href="{{ path('app_main') }}" class="button-blue">Annuler</a>
 
-	<a href="{{ path('app_main') }}" class="button-blue">Annuler</a>
-
-	{{ include('user/_delete_form.html.twig') }}
-
+			{{ include('user/_delete_form.html.twig') }}
+		</div>
+	</div>
 {% endblock %}

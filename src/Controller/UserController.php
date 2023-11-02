@@ -9,6 +9,7 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Annotation\Route;
 
 #[Route('/user')]
@@ -51,16 +52,25 @@ class UserController extends AbstractController
     }
 
     #[Route('/{id}/edit', name: 'app_user_edit', methods: ['GET', 'POST'])]
-    public function edit(Request $request, User $user, EntityManagerInterface $entityManager): Response
+    public function edit(Request $request, User $user, EntityManagerInterface $entityManager, UserPasswordHasherInterface $userPasswordHasher): Response
     {
         $form = $this->createForm(UserType::class, $user);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
+            // Gestion du mot de passe modifié ou non ?
+            // On va le chercher directement dans le formulaire car non mappé sur l'entité
+            if ($form->get('password')->getData()) {
+                // Si oui, on hache le nouveau mot de passe
+                $hashedPassword = $userPasswordHasher->hashPassword($user, $form->get('password')->getData());
+                // On écrase le mot de passe en clair par le mot de passe haché
+                $user->setPassword($hashedPassword);
+            }
+
             $entityManager->flush();
 
-            $request->getSession()->invalidate();
-            $this->container->get('security.token_storage')->setToken(null);
+            $this->addFlash("green", "Votre compte a bien été modifié.");
 
             return $this->redirectToRoute('app_main', [], Response::HTTP_SEE_OTHER);
         }
@@ -81,6 +91,9 @@ class UserController extends AbstractController
 
         $request->getSession()->invalidate();
         $this->container->get('security.token_storage')->setToken(null);
+
+        $this->addFlash("red", "Votre compte a bien été supprimé.");
+
 
         return $this->redirectToRoute('app_main', [], Response::HTTP_SEE_OTHER);
     }
