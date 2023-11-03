@@ -22,7 +22,7 @@
 			<div class="text-center w-1/2 mx-auto">{{ message.content|nl2br }}</div>
 
 			<div>
-				<a href="{{ path('app_message_send') }}" class="block w-32 mx-auto my-2 button-blue">Répondre</a>
+				<a href="{{ path('app_message_send') }}" class="block w-32 mx-auto my-2 button-green">Répondre</a>
 				<a href="{{ path('app_message_received')}}" class="block w-40 mx-auto button-yellow">Boîte de réception</a>
 				<a href="{{ path('app_message_delete', {id: message.id}) }}" onclick="return confirm('Etes-vous sûr de vouloir supprimer cet élément ?');" class="block w-32 mx-auto my-2 button-red">Supprimer</a>
 			</div>

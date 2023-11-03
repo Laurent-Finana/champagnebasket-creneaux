@@ -36,6 +36,7 @@ class SlotController extends AbstractController
             $entityManager->persist($slot);
             $entityManager->flush();
 
+            $this->addFlash("green", "Créneau ajouté.");
             return $this->redirectToRoute('app_slot_index', [], Response::HTTP_SEE_OTHER);
         }
 
@@ -62,6 +63,7 @@ class SlotController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager->flush();
 
+            $this->addFlash("blue", "Créneau modifié.");
             return $this->redirectToRoute('app_slot_index', [], Response::HTTP_SEE_OTHER);
         }
 
@@ -79,6 +81,7 @@ class SlotController extends AbstractController
             $entityManager->flush();
         }
 
+        $this->addFlash("red", "Créneau supprimé.");
         return $this->redirectToRoute('app_slot_index', [], Response::HTTP_SEE_OTHER);
     }
 }

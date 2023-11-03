@@ -127,7 +127,35 @@ calendar.render();
 
 
 		<script>
-			window.onload = () => {
+
+			if (window.innerWidth < 768) {
+window.onload = () => {
+let calendarElt = document.querySelector("#calendrier");
+
+let calendar = new FullCalendar.Calendar(calendarElt, {
+initialView: 'timeGridWeek',
+locale: 'fr',
+firstDay: 1,
+timeZone: 'Europe/Paris',
+scrollTime: '08:00:00',
+headerToolbar: {
+left: 'title',
+end: 'prev,next'
+},
+buttonText: {
+month: 'Mois',
+week: 'Semaine',
+list: 'Liste',
+today: 'Aujourd\'hui'
+},
+allDaySlot: false,
+events: {{ data|raw }}
+
+});
+calendar.render();
+}
+} else {
+window.onload = () => {
 let calendarElt = document.querySelector("#calendrier");
 
 let calendar = new FullCalendar.Calendar(calendarElt, {
@@ -152,6 +180,7 @@ events: {{ data|raw }}
 
 });
 calendar.render();
+}
 }
 		</script>
 
