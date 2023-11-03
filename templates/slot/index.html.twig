@@ -24,6 +24,7 @@
 					<th scope="col" class="px-6 py-3 text-center">Fin</th>
 					<th scope="col" class="px-6 py-3 text-center">Description</th>
 					<th scope="col" class="px-6 py-3 text-center">Equipe</th>
+					<th scope="col" class="px-6 py-3 text-center">Salle</th>
 					<th scope="col" class="px-6 py-3 text-center">Actions</th>
 				</tr>
 			</thead>
@@ -46,6 +47,7 @@
 						<td class="td-class">
 							<textarea class="border border-gray-300 rounded-lg">{{ slot.description }}</textarea>
 						</td>
+
 						{% if slot.backgroundColor == "#ffff00" %}
 							<td class="td-class text-colorProB">Pro B</td>
 						{% elseif slot.backgroundColor == "#fc87f9" %}
@@ -57,6 +59,15 @@
 						{% elseif slot.backgroundColor == "#EE9209" %}
 							<td class="td-class text-colorCdfFeminines">Cdf féminines</td>
 						{% endif %}
+
+						{% if slot.room == 1 %}
+							<td class="td-class">Grande Salle</td>
+						{% elseif slot.room == 2 %}
+							<td class="td-class">Petite Salle</td>
+						{% elseif slot.room == 3 %}
+							<td class="td-class">Musculation</td>
+						{% endif %}
+
 						<td class="td-class space-y-1">
 							<a href="{{ path('app_slot_show', {'id': slot.id}) }}" class="button-blue">Voir</a>
 							<a href="{{ path('app_slot_edit', {'id': slot.id}) }}" class="button-yellow">Modifier</a>
@@ -64,12 +75,7 @@
 						</td>
 					</tr>
 				{% endfor %}
-
-
 			</tbody>
-		</table>
-	</div>
-{% endblock %}
-
-
-{# {% if slot.backgroundColor == " #ffff00" %}bg-colorProB {% elseif slot.backgroundColor == " #fc87f9" %}bg-colorLigue2 {% elseif slot.backgroundColor == " #00b0f0" %}bg-colorEspoirs {% elseif slot.backgroundColor == " #92d050" %} bg-colorU18 {% elseif slot.backgroundColor == " #EE9209" %} bg-colorCdfFeminines {% endif %} #}
+		</tbody>
+	</table>
+</div>{% endblock %}{# {% if slot.backgroundColor == " #ffff00" %}bg-colorProB {% elseif slot.backgroundColor == " #fc87f9" %}bg-colorLigue2 {% elseif slot.backgroundColor == " #00b0f0" %}bg-colorEspoirs {% elseif slot.backgroundColor == " #92d050" %} bg-colorU18 {% elseif slot.backgroundColor == " #EE9209" %} bg-colorCdfFeminines {% endif %} #}

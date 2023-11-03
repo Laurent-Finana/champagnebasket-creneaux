@@ -123,8 +123,7 @@ calendar.render();
 }
 		</script>
 
-	{% else %}
-
+	{% elseif is_granted('ROLE_USER') %}
 
 		<script>
 
