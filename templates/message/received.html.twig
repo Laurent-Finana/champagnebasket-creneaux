@@ -5,11 +5,13 @@
 
 
 {% block body %}
+
+	{{ include ('_flash_messages.html.twig')}}
+
 	<h1 class="text-2xl text-center py-10">
 		Boîte de réception
 	</h1>
 
-	{{ include ('_flash_messages.html.twig')}}
 
 	<div class="text-center mb-2">
 		<a href="{{ path('app_message_send') }}" class="button-green">Envoyer un message</a>

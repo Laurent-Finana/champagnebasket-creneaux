@@ -171,8 +171,6 @@
 								{% if is_granted('ROLE_COACH') %}
 									<a href="{{ path('app_slot_new')}}" class="block p-4 text-sm font-semibold hover:bg-blue-50 hover:text-blue-600 rounded {% if (app.request.attributes.get('_route') == 'app_slot_new') %} text-blue-600 font-bold underline {% else %}  text-gray-400 {% endif %}">Nouveau créneau</a>
 									<a href="{{ path('app_slot_index')}}" class="block p-4 text-sm font-semibold hover:bg-blue-50 hover:text-blue-600 rounded {% if (app.request.attributes.get('_route') == 'app_slot_index') %} text-blue-600 font-bold underline {% else %}  text-gray-400 {% endif %}">Modifier un créneau</a>
-									{# 									<a href="{{ path('app_slot_index')}}" class="block p-4 text-sm font-semibold hover:bg-blue-50 hover:text-blue-600 rounded {% if (app.request.attributes.get('_route') == 'app_slot_index') %} text-blue-600 font-bold underline {% else %}  text-gray-400 {% endif %}">Liste des créneaux</a>
-																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																				 #}
 								{% elseif is_granted('ROLE_PLAYER') %}
 									<a href="{{ path('app_message_send')}}" class="block p-4 text-sm font-semibold hover:bg-blue-50 hover:text-blue-600 rounded {% if (app.request.attributes.get('_route') == 'app_message_send') %} text-blue-600 font-bold underline {% else %}  text-gray-400 {% endif %}">Demander un créneau</a>
 								{% endif %}
@@ -207,7 +205,6 @@
 
 						<a href="{{ path('app_slot_new')}}" class="mx-4 mt-4 button-green">Nouveau créneau</a>
 						<a href="{{ path('app_slot_index')}}" class="m-4 button-yellow">Modifier un créneau</a>
-						{# <a href="{{ path('app_slot_index')}}" class="button-blue">Liste des créneaux</a> #}
 
 					{% elseif is_granted('ROLE_PLAYER') %}
 						<a href="{{ path('app_message_send')}}" class="button-green">Demander un créneau</a>
@@ -220,22 +217,23 @@
 			</div>
 
 			{% block footer %}
-				<footer>
+				<footer class="bg-navbarBg shadow">
+					<div class="w-full p-4 text-center md:flex md:items-center md:justify-between">
+						<span class="text-sm text-white hover:text-gray-500 ">© champagnebasket-creneaux - 2023
+						</span>
+						<ul class="flex flex-wrap items-center justify-center mt-3 text-sm font-medium text-white sm:mt-0">
+							<li>
+								<a href="https://champagne-basket.fr" class="mr-4 hover:text-gray-500 hover:underline md:mr-6 ">Champagne Basket</a>
+							</li>
+							<li>
+								<a href="https://champagne-basket-feminin.fr" class="mr-4 hover:text-gray-500 hover:underline md:mr-6 ">Champagne Basket Féminin</a>
+							</li>
 
-					<div class="bg-navbarBg">
-						<ul class="flex justify-center items-center space-x-10 text-sm p-2 text-white">
 							<li>
-								<a href="">A propos</a>
-							</li>
-							<li>
-								<a href="">Mentions légales</a>
-							</li>
-							<li>
-								<a href="">Contact</a>
+								<a href="{{ path('app_legal_notices') }}" class="mr-4 hover:text-gray-500 hover:underline md:mr-6 ">Mentions légales</a>
 							</li>
 						</ul>
 					</div>
-
 				</footer>
 			{% endblock %}
 
