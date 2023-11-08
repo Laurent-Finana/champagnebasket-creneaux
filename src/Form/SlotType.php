@@ -36,7 +36,8 @@ class SlotType extends AbstractType
                     'Ligue2' => '#fc87f9',
                     'Espoirs' => '#00b0f0',
                     'U18' => '#92d050',
-                    'Cdf féminines' => '#EE9209'
+                    'Cdf féminines' => '#EE9209',
+                    'Indisponible' => '#6b7280'
                 ],
             ])
             ->add('text_color', ColorType::class, [

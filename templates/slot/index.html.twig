@@ -41,6 +41,8 @@
 							<td class="td-class underline font-semibold text-colorU18">{{ slot.title }}</td>
 						{% elseif slot.backgroundColor == "#EE9209" %}
 							<td class="td-class underline font-semibold text-colorCdfFeminines">{{ slot.title }}</td>
+						{% elseif slot.backgroundColor == "#6b7280" %}
+							<td class="td-class underline font-semibold text-colorIndisponible">{{ slot.title }}</td>
 						{% endif %}
 						<td class="td-class">{{ slot.start ? slot.start|date('d-m-Y H:i') : '' }}</td>
 						<td class="td-class">{{ slot.end ? slot.end|date('d-m-Y H:i') : '' }}</td>
@@ -58,6 +60,8 @@
 							<td class="td-class text-colorU18">U18</td>
 						{% elseif slot.backgroundColor == "#EE9209" %}
 							<td class="td-class text-colorCdfFeminines">Cdf féminines</td>
+						{% elseif slot.backgroundColor == "#6b7280" %}
+							<td class="td-class text-colorIndisponible">Indisponible</td>
 						{% endif %}
 
 						{% if slot.room == 1 %}
@@ -78,4 +82,4 @@
 			</tbody>
 		</tbody>
 	</table>
-</div>{% endblock %}{# {% if slot.backgroundColor == " #ffff00" %}bg-colorProB {% elseif slot.backgroundColor == " #fc87f9" %}bg-colorLigue2 {% elseif slot.backgroundColor == " #00b0f0" %}bg-colorEspoirs {% elseif slot.backgroundColor == " #92d050" %} bg-colorU18 {% elseif slot.backgroundColor == " #EE9209" %} bg-colorCdfFeminines {% endif %} #}
+</div>{% endblock %}

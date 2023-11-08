@@ -14,6 +14,7 @@ module.exports = {
         colorEspoirs: "#00b0f0",
         colorU18: "#92d050",
         colorCdfFeminines: "#EE9209",
+        colorIndisponible: "#4b5563",
         greenTheme: "#06bb64",
         buttonYellow: "#e9b308",
       },
