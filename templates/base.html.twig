@@ -187,7 +187,9 @@
 							{% else %}
 								<a class="block px-4 py-3 mb-2 leading-loose text-xs text-center text-white font-semibold bg-blue-600 hover:bg-blue-700  rounded-xl" href="{{ path('app_login')}}">Connexion</a>
 								<p class="my-4 text-xs text-center text-gray-400">
-									<span>Pas encore inscrit ? Créer un compte</span>
+									<span>
+										<a href="{{ path('app_register') }}">Pas encore inscrit ? Créer un compte</a>
+									</span>
 								</p>
 							{% endif %}
 						</div>
