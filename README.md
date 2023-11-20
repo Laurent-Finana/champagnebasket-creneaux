@@ -14,3 +14,4 @@ L'application est fonctionnelle et déployée : [champagnebasket-creneaux](https
 Il faut être validé par un administrateur pour accèder à la plupart des fonctionnalités, voici donc quelques captures d'écran pour un aperçu d'ensemble :
 
 ![ExempleGrandeSalle](accueilAdmin.png)
+![ExempleGrandeSalle](public/assets/images/modifCreneau.png)
