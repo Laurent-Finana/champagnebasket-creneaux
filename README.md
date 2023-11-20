@@ -50,4 +50,4 @@ Aperçu du backoffice :
 
 ## Contact
 
-Pour toutes questions ou demande : [Me contacter](mailto:laurentfinana@hotmail.fr)
+Pour toutes questions ou demandes : [Me contacter](mailto:laurentfinana@hotmail.fr)
