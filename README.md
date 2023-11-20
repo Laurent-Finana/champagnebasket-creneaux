@@ -36,7 +36,7 @@ Aperçu du backoffice :
 - Tailwind CSS
 - EasyAdmin 4
 
-## Installation du projet
+## Installation du projet
 
 - `composer install`
 - Créer un fichier **.env.local** à la racine du projet
