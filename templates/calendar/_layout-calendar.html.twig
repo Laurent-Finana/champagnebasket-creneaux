@@ -123,6 +123,76 @@ calendar.render();
 }
 		</script>
 
+	{% elseif is_granted('ROLE_PLAYER') %}
+
+		<script>
+
+			if (window.innerWidth < 768) {
+window.onload = () => {
+let calendarElt = document.querySelector("#calendrier");
+
+let calendar = new FullCalendar.Calendar(calendarElt, {
+initialView: 'timeGridWeek',
+locale: 'fr',
+firstDay: 1,
+timeZone: 'Europe/Paris',
+scrollTime: '08:00:00',
+headerToolbar: {
+left: 'title',
+end: 'prev,next'
+},
+buttonText: {
+month: 'Mois',
+week: 'Semaine',
+list: 'Liste',
+today: 'Aujourd\'hui'
+},
+allDaySlot: false,
+events: {{ data|raw }},
+
+eventClick: function (info) {
+alert('Description: ' + info.event.extendedProps.description);
+}
+});
+
+calendar.render();
+}
+}
+ else {
+window.onload = () => {
+let calendarElt = document.querySelector("#calendrier");
+
+let calendar = new FullCalendar.Calendar(calendarElt, {
+initialView: 'timeGridWeek',
+locale: 'fr',
+firstDay: 1,
+timeZone: 'Europe/Paris',
+scrollTime: '08:00:00',
+headerToolbar: {
+left: 'dayGridMonth,timeGridWeek,list',
+center: 'title',
+end: 'today, prev,next'
+},
+buttonText: {
+month: 'Mois',
+week: 'Semaine',
+list: 'Liste',
+today: 'Aujourd\'hui'
+},
+allDaySlot: false,
+events: {{ data|raw }},
+
+eventClick: function (info) {
+alert('Description: ' + info.event.extendedProps.description);
+}
+});
+
+calendar.render();
+}
+}
+
+		</script>
+
 	{% elseif is_granted('ROLE_USER') %}
 
 		<script>
